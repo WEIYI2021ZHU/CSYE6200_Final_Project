@@ -1,0 +1,26 @@
+Student ID,Student Name,Age,Parent Name,Address,Date Accepted
+1,Maria,22,Alan,5930 Fake Street,08/26/2021
+2,Mitchell,42,Laverne,5839 Known Street,05/11/2020
+3,Christina,34,James,1009 Devis Street,08/19/2021
+4,Grant,30,Crystal,5843 Study Street,09/05/2021
+5,May,45,Julio,2877 Haha Street,06/18/2019
+6,Al,34,Leona,3465 Rome Street,11/26/2020
+7,Sharri,28,Katrina,4858 Greece Street,06/22/2021
+8,Freddie,17,Sharon,1165 Dig Street,07/05/2021
+9,Molly,41,Courtney,2972 Dog Street,04/20/2021
+10,Santos,23,Danny,1928 Cat Street,11/03/2021
+11,Steve,37,Tony,3368 Rabbit Street,09/19/2021
+12,Daryl,38,Terrance,4641 Sheep Street,06/23/2020
+13,Kristopher,64,Dominick,5710 Tiger Street,12/06/2017
+14,Penny,47,Marie,1329 Lion Street,02/17/2021
+15,Flora,62,Minnie,4757 Thor Street,06/22/2018
+16,Floyd,70,Clifton,4397 Struggle Street,11/05/2016
+17,Ora,14,Roy,4160 Zabara Street,09/16/2021
+18,Stone,15,Evelyn,3137 China Street,05/04/2021
+19,Leon,17,Lydia,4647 Fish Street,09/03/2021
+20,Darrel,27,Arturo,2176 Snake Street,05/13/2020
+21,Jan,59,Henry,5407 Wolf Street,02/25/2020
+22,Marco,26,Martha,3168 Cow Street,05/07/2020
+23,Mercedes,64,Bernard,5251 Deer Street,05/13/2017
+24,Lionel,21,Brent,5792 Snow Street,05/22/2021
+25,Sonia,21,Ian,870 White Street,11/17/2021

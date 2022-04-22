@@ -78,6 +78,11 @@ public class StudentPortal extends JFrame {
 		panel_1.add(name);
 		name.setColumns(15);
 		
+		id = new JTextField();
+		id.setText("Student's Id");
+		panel_1.add(id);
+		id.setColumns(15);
+		
 		age = new JTextField();
 		age.setText("Student's Age");
 		panel_1.add(age);
@@ -87,11 +92,6 @@ public class StudentPortal extends JFrame {
 		parentsName.setText("Parents' Name");
 		panel_1.add(parentsName);
 		parentsName.setColumns(15);
-		
-		id = new JTextField();
-		id.setText("Student's Id");
-		panel_1.add(id);
-		id.setColumns(15);
 		
 		number = new JTextField();
 		number.setText("Phone Number");

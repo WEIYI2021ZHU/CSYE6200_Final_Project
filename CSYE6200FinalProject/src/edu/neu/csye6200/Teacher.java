@@ -3,6 +3,9 @@ package edu.neu.csye6200;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Teacher extends Person{
 
     private static int idCount = 1;
@@ -13,8 +16,8 @@ public class Teacher extends Person{
     private int Capacity;
     private List<Student> StuList;
 
-    public Teacher(String name, int age, double credits, int minStuAge, int maxStuAge, int capacity) {
-        super(name, age);
+    public Teacher(String name, int age, String phoneNumber, double credits, int minStuAge, int maxStuAge, int capacity) {
+        super(name, age, phoneNumber);
         this.id = idCount;
         idCount++;
         this.credits = credits;
@@ -95,18 +98,19 @@ public class Teacher extends Person{
         return "Teacher Name: " + super.getName() +
                 " id: " + id +
                 " Age: " + super.getAge() +
+                " Phone number: " + super.getPhoneNum() +
                 " Credits: " + credits +
                 " MinStuAge: " + minStuAge +
                 " MaxStuAge: " + maxStuAge +
                 " Capacity:" + Capacity +
-                " Teaching Student: \n" + getAllStudent() ;
+                "\n\tTeaching Student:" + getAllStudent() ;
     }
 
     private String getAllStudent(){
         String ret = "";
 
         for(Student i: StuList){
-            ret += i.getName() + "\t";
+            ret += "\n\t" + i.getName() + " ID: " + i.getId();
         }
 
         return ret;

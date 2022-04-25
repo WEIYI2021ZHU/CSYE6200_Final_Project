@@ -158,9 +158,11 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
             txtDate.setText("");
             txtID.setText("");
         }
-        // to ensure owner name does not contain digital number
         
-
+        // to ensure owner name does not contain digital number
+        jComboBox1.setSelectedItem("");
+        txtDate.setText("");
+        txtID.setText("");
         JOptionPane.showMessageDialog(this, "Student Immunization Information Saved!");
         
     }//GEN-LAST:event_btnSaveActionPerformed

@@ -1,15 +1,17 @@
 package edu.neu.csye6200;
 
 public class Person {
-	private String name;
+    private String name;
     private int age;
+    private String phoneNum;
 
     public Person() {
     }
 
-    public Person(String name, int age) {
+    public Person(String name, int age, String phoneNum) {
         this.name = name;
         this.age = age;
+        this.phoneNum = phoneNum;
     }
 
     public String getName() {
@@ -20,6 +22,10 @@ public class Person {
         return age;
     }
 
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -27,4 +33,10 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
 }
+

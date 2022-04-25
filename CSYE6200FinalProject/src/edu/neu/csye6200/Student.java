@@ -12,8 +12,8 @@ public class Student extends Person{
     private Date walkInDate;
     private List<StudentImmu> immuInfo;
 
-    public Student(String name, int age, int id, String parentName, String address, Date walkInDate) {
-        super(name, age);
+    public Student(String name, int age, String phoneNum ,int id, String parentName, String address, Date walkInDate) {
+        super(name, age, phoneNum);
         this.id = id;
         this.parentName = parentName;
         this.address = address;
@@ -87,9 +87,10 @@ public class Student extends Person{
         return "Student Name: " + super.getName() +
                 " id: " + id +
                 " Age: " + super.getAge() +
-                " ParentName='" + parentName +
-                " Address='" + address +
-                " WalkInDate=" + walkInDate +
+                " Parent Phone number: " + super.getPhoneNum() +
+                " ParentName: " + parentName +
+                " Address: " + address +
+                " WalkInDate: " + walkInDate +
                 "\n\tImmunization Info: " + printImmuInfo() ;
     }
 

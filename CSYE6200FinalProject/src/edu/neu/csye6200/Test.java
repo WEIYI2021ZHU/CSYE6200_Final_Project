@@ -7,13 +7,13 @@ public class Test {
 
     public static void main(String[] args ){
 
-        Student astu = new Student("Jack", 12, 1, "JJ", "addresssss", null);
-        Student bstu = new Student("Jack", 12, 1, "JJ", "addresssss", null);
+        Student astu = new Student("Jack", 12, "1234567890", 1, "JJ", "addresssss", null);
+        Student bstu = new Student("Jack", 12, "1234567890", 1, "JJ", "addresssss", null);
         //通过equals 来比较两个student是否一样 不能直接用==判断。
         System.out.println(astu.equals(bstu)); //true
 
-        Teacher atea = new Teacher("Pavrd", 36, 5.0, 6, 12, 3);
-        Teacher btea = new Teacher("Pavrd", 36, 5.0, 6, 12, 3);
+        Teacher atea = new Teacher("Pavrd", 36, "1234567890", 5.0, 6, 12, 3);
+        Teacher btea = new Teacher("Pavrd", 36, "1234567890", 5.0, 6, 12, 3);
         System.out.println(atea.getId() +"  ," + btea.getId()); //ID为系统自动更新生成，每添加一个老师，id默认加1.从1开始。
         btea.setId(1);
         System.out.println(atea.equals(btea)); //true,原因同上，id相同。
@@ -42,24 +42,24 @@ public class Test {
 
         System.out.println("\n**********************************");
         bstu.setId(2);
-        Student cstu = new Student("Jack", 12, 3, "JJ", "addresssss", null);
+        Student cstu = new Student("Jack", 12, "1234567890",3, "JJ", "addresssss", null);
         atea.setStuList(bstu);
         atea.setStuList(cstu);
         System.out.println(atea); //此次将有3项
 
         System.out.println("\n**********************************");
-        Student dstu = new Student("Jack", 12, 5, "JJ", "addresssss", null);
+        Student dstu = new Student("Jack", 12, "1234567890", 5, "JJ", "addresssss", null);
         atea.setStuList(dstu);
         System.out.println(atea); //此次依然3项，因为capacity为3
 
         System.out.println("\nTest Factory**********************************");
-        TeacherFactory tf = new TeacherFactory();
-        StudentFactory sf = new StudentFactory();
+        TeacherFactory tf = TeacherFactory.getInstance();
+        StudentFactory sf = StudentFactory.getInstance();
         StudentImmuFactory sif = new StudentImmuFactory();
 
         List<Person> listPerson = new ArrayList<>();
-        listPerson.add(tf.getTeacher("Pavrd", 36, 5.0, 6, 12, 3));
-        listPerson.add(sf.getStudent("Jack", 12, 3, "JJ", "addresssss", null));
+        listPerson.add(tf.getTeacher("Pavrd", 36, "1234567890", 5.0, 6, 12, 3));
+        listPerson.add(sf.getStudent("Jack", 12, "1234567890", 3, "JJ", "addresssss", null));
         StudentImmu newStuImmu = sif.getStudentImmu(2, "Jack", "ABCDEFG", 24, 3, null);
 
         for(Person i: listPerson){

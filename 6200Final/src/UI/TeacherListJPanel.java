@@ -4,17 +4,23 @@
  */
 package UI;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author weiyi
  */
-public class TeacherList extends javax.swing.JPanel {
+public class TeacherListJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form TeacherList
      */
-    public TeacherList() {
+    
+    private JPanel jpanel;
+    public TeacherListJPanel(JPanel jpanel) {
         initComponents();
+        this.jpanel = jpanel;
     }
 
     /**
@@ -30,26 +36,31 @@ public class TeacherList extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableTeacher = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
+        btnGenerate = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        lblStuName = new javax.swing.JLabel();
 
         lblTeacher.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblTeacher.setText("Teachers List");
 
         tableTeacher.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "Age", "Phone", "Student 1", "Student 2", "Student 3", "Student 4", "Classroom", "Date"
+                "Name", "Age", "Phone", "Classroom", "Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -67,10 +78,6 @@ public class TeacherList extends javax.swing.JPanel {
             tableTeacher.getColumnModel().getColumn(2).setResizable(false);
             tableTeacher.getColumnModel().getColumn(3).setResizable(false);
             tableTeacher.getColumnModel().getColumn(4).setResizable(false);
-            tableTeacher.getColumnModel().getColumn(5).setResizable(false);
-            tableTeacher.getColumnModel().getColumn(6).setResizable(false);
-            tableTeacher.getColumnModel().getColumn(7).setResizable(false);
-            tableTeacher.getColumnModel().getColumn(8).setResizable(false);
         }
 
         btnBack.setText("<<Back");
@@ -79,6 +86,14 @@ public class TeacherList extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+
+        btnGenerate.setText("Generate");
+
+        btnView.setText("View Details");
+
+        lblName.setText("Teacher: ");
+
+        lblStuName.setText("Students:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -94,6 +109,21 @@ public class TeacherList extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTeacher)
                 .addGap(412, 412, 412))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(btnGenerate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblStuName)
+                            .addComponent(lblName))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnView)
+                .addGap(237, 237, 237))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,19 +137,36 @@ public class TeacherList extends javax.swing.JPanel {
                         .addComponent(btnBack)))
                 .addGap(102, 102, 102)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGenerate)
+                    .addComponent(btnView))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblStuName)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        jpanel.remove(this);
+        CardLayout layout = (CardLayout) jpanel.getLayout();
+        layout.previous(jpanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnGenerate;
+    private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblStuName;
     private javax.swing.JLabel lblTeacher;
     private javax.swing.JTable tableTeacher;
+    private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

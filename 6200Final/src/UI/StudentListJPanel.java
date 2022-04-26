@@ -4,17 +4,22 @@
  */
 package UI;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author weiyi
  */
-public class StudentList extends javax.swing.JPanel {
+public class StudentListJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form StudentList
      */
-    public StudentList() {
+    private JPanel jp;
+    public StudentListJPanel(JPanel jp) {
         initComponents();
+        this.jp = jp;
     }
 
     /**
@@ -112,7 +117,9 @@ public class StudentList extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        jp.remove(this);
+        CardLayout layout = (CardLayout) jp.getLayout();
+        layout.previous(jp);
     }//GEN-LAST:event_btnBackActionPerformed
 
 

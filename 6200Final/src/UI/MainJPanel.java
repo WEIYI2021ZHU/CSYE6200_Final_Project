@@ -24,7 +24,7 @@ public class MainJPanel extends javax.swing.JPanel {
         this.mainJPanel = mainJPanel;
         this.frame = frame;
        
-        this.setSize(700, 500);
+        this.setSize(700,500);
     }
 
     /**

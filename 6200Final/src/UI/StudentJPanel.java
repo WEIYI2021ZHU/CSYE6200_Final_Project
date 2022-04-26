@@ -163,6 +163,8 @@ public class StudentJPanel extends javax.swing.JPanel {
         String address = txtAddress.getText();
         String pName = txtPName.getText();
         
+        String error = "";
+        
 //        student.setName(name);
 //        student.setPhone(phone);
 //        student.setAddress(address);
@@ -172,38 +174,54 @@ public class StudentJPanel extends javax.swing.JPanel {
         
         // to ensure owner name does not contain digital number
         if (name.equals("")){
-            JOptionPane.showMessageDialog(this, "Name is Empty!!");
+            error += "Name is Empty!!\n";
         }
         
         if (phone.equals("")){
-            JOptionPane.showMessageDialog(this, "Phone is Empty!!");
+            error += "Phone is Empty!!\n";
         }
         
         if (age.equals("")){
-            JOptionPane.showMessageDialog(this, "Age is Empty!!");
+            error += "Age is Empty!!\n";
         }
         
         if (ID.equals("")){
-            JOptionPane.showMessageDialog(this, "ID is Empty!!");
+            error+= "ID is Empty!!\n";
         }
-        else if(ID.length()!=2||!isNumeric(ID)){
-                JOptionPane.showMessageDialog(this,"Invalid enter of ID!");
+        else{
+            try{
+                int id = Integer.parseInt(ID);
+                if(id<1 || id>77) {
+                    error += "Student ID is from 1 to 77!!\n";
+                }
+                
             }
+            catch(NumberFormatException e) {
+                error += "Please fill in Integer for Student ID!!\n";
+            }
+        }
         
         if (pName.equals("")){
-            JOptionPane.showMessageDialog(this, "Parents` Name is Empty!!");
+            error += "Parent's Name is Empty!!\n";
         }
         
         if (address.equals("")){
-            JOptionPane.showMessageDialog(this, "Address is Empty!!");
+            error += "Address is Empty!!\n";
         }
         
-        JOptionPane.showMessageDialog(this, "Student Information Saved!");
+        if(!error.isEmpty()) {
+            JOptionPane.showMessageDialog(null, error);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Student Information Saved!");
+            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel);
+            mainJPanel.add(sip);
+            CardLayout layout = (CardLayout)mainJPanel.getLayout();
+            layout.next(mainJPanel);
+        }
         
-        StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel);
-        mainJPanel.add(sip);
-        CardLayout layout = (CardLayout)mainJPanel.getLayout();
-        layout.next(mainJPanel);
+        
+        
         
     }//GEN-LAST:event_btnSaveActionPerformed
 

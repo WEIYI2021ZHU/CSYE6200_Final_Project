@@ -5,7 +5,9 @@
 package UI;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -90,6 +92,11 @@ public class TeacherListJPanel extends javax.swing.JPanel {
         btnGenerate.setText("Generate");
 
         btnView.setText("View Details");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         lblName.setText("Teacher: ");
 
@@ -156,6 +163,19 @@ public class TeacherListJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) jpanel.getLayout();
         layout.previous(jpanel);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        int selectedRowIndex = tableTeacher.getSelectedRow();
+        
+        if (selectedRowIndex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to view details.");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) tableTeacher.getModel();
+        String name = model.getValueAt(selectedRowIndex, 0).toString();
+        
+    }//GEN-LAST:event_btnViewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

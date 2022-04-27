@@ -1,0 +1,462 @@
+1,Maria,Hib,6,2,07/15/2021
+1,Maria,DTaP,8,3,09/15/2021
+1,Maria,Polio,11,0,01/01/2022
+1,Maria,Hepatitis B,4,2,05/15/2021
+1,Maria,MMR,11,0,01/01/2022
+1,Maria,Varicella,11,0,01/01/2022
+2,Mitchell,Hib,7,2,07/15/2021
+2,Mitchell,DTaP,8,3,08/15/2021
+2,Mitchell,Polio,12,0,01/01/2022
+2,Mitchell,Hepatitis B,4,2,04/15/2021
+2,Mitchell,MMR,12,0,01/01/2022
+2,Mitchell,Varicella,12,0,01/01/2022
+3,Christina,Hib,4,2,09/15/2021
+3,Christina,DTaP,6,3,11/15/2021
+3,Christina,Polio,6,3,11/15/2021
+3,Christina,Hepatitis B,6,3,11/15/2021
+3,Christina,MMR,8,0,01/01/2022
+3,Christina,Varicella,8,0,01/01/2022
+4,Grant,Hib,4,2,07/15/2021
+4,Grant,DTaP,6,3,09/15/2021
+4,Grant,Polio,6,3,09/15/2021
+4,Grant,Hepatitis B,6,3,09/15/2021
+4,Grant,MMR,11,0,01/01/2022
+4,Grant,Varicella,11,0,01/01/2022
+5,May,Hib,4,2,11/15/2021
+5,May,DTaP,6,0,01/01/2022
+5,May,Polio,6,0,01/01/2022
+5,May,Hepatitis B,6,0,01/01/2022
+5,May,MMR,6,0,01/01/2022
+5,May,Varicella,6,0,01/01/2022
+6,Al,Hib,4,2,11/15/2021
+6,Al,DTaP,6,0,01/01/2022
+6,Al,Polio,6,0,01/01/2022
+6,Al,Hepatitis B,6,0,01/01/2022
+6,Al,MMR,6,0,01/01/2022
+6,Al,Varicella,6,0,01/01/2022
+7,Sharri,Hib,4,2,07/15/2021
+7,Sharri,DTaP,10,0,01/01/2022
+7,Sharri,Polio,10,0,01/01/2022
+7,Sharri,Hepatitis B,10,0,01/01/2022
+7,Sharri,MMR,10,0,01/01/2022
+7,Sharri,Varicella,10,0,01/01/2022
+8,Freddie,Hib,4,2,09/15/2021
+8,Freddie,DTaP,8,0,01/01/2022
+8,Freddie,Polio,8,0,01/01/2022
+8,Freddie,Hepatitis B,8,0,01/01/2022
+8,Freddie,MMR,8,0,01/01/2022
+8,Freddie,Varicella,8,0,01/01/2022
+9,Molly,Hib,4,2,09/15/2021
+9,Molly,DTaP,6,3,11/15/2021
+9,Molly,Polio,8,0,01/01/2022
+9,Molly,Hepatitis B,6,3,11/15/2021
+9,Molly,MMR,8,0,01/01/2022
+9,Molly,Varicella,8,0,01/01/2022
+10,Santos,Hib,4,2,09/15/2021
+10,Santos,DTaP,6,3,11/15/2021
+10,Santos,Polio,6,3,11/15/2021
+10,Santos,Hepatitis B,6,3,11/15/2021
+10,Santos,MMR,8,0,01/01/2022
+10,Santos,Varicella,8,0,01/01/2022
+11,Steve,Hib,4,2,07/15/2021
+11,Steve,DTaP,6,3,09/15/2021
+11,Steve,Polio,6,3,09/15/2021
+11,Steve,Hepatitis B,6,3,09/15/2021
+11,Steve,MMR,11,0,01/01/2022
+11,Steve,Varicella,11,0,01/01/2022
+12,Daryl,Hib,4,2,08/15/2021
+12,Daryl,DTaP,6,3,10/15/2021
+12,Daryl,Polio,6,3,10/15/2021
+12,Daryl,Hepatitis B,6,3,10/15/2021
+12,Daryl,MMR,12,0,01/01/2022
+12,Daryl,Varicella,12,0,01/01/2022
+13,Kristopher,Hib,15,4,05/15/2021
+13,Kristopher,DTaP,15,4,05/15/2021
+13,Kristopher,Polio,18,3,08/15/2021
+13,Kristopher,Hepatitis B,18,3,08/15/2021
+13,Kristopher,MMR,23,0,01/01/2022
+13,Kristopher,Varicella,23,0,01/01/2022
+14,Penny,Hib,12,3,07/15/2021
+14,Penny,DTaP,12,3,07/15/2021
+14,Penny,Polio,12,3,07/15/2021
+14,Penny,Hepatitis B,15,3,10/15/2021
+14,Penny,MMR,18,0,01/01/2021
+14,Penny,Varicella,18,0,01/01/2021
+15,Flora,Hib,12,3,06/15/2021
+15,Flora,DTaP,12,3,06/15/2021
+15,Flora,Polio,12,3,06/15/2021
+15,Flora,Hepatitis B,16,3,10/15/2021
+15,Flora,MMR,16,1,10/15/2021
+15,Flora,Varicella,19,0,01/01/2022
+16,Floyd,Hib,13,0,01/01/2022
+16,Floyd,DTaP,13,0,01/01/2022
+16,Floyd,Polio,13,0,01/01/2022
+16,Floyd,Hepatitis B,13,0,01/01/2022
+16,Floyd,MMR,13,0,01/01/2022
+16,Floyd,Varicella,13,0,01/01/2022
+17,Ora,Hib,13,0,01/01/2022
+17,Ora,DTaP,13,0,01/01/2022
+17,Ora,Polio,13,0,01/01/2022
+17,Ora,Hepatitis B,13,0,01/01/2022
+17,Ora,MMR,13,0,01/01/2022
+17,Ora,Varicella,13,0,01/01/2022
+18,Stone,Hib,15,0,01/01/2022
+18,Stone,DTaP,15,0,01/01/2022
+18,Stone,Polio,15,0,01/01/2022
+18,Stone,Hepatitis B,15,0,01/01/2022
+18,Stone,MMR,15,0,01/01/2022
+18,Stone,Varicella,15,0,01/01/2022
+19,Leon,Hib,21,0,01/01/2022
+19,Leon,DTaP,21,0,01/01/2022
+19,Leon,Polio,21,0,01/01/2022
+19,Leon,Hepatitis B,21,0,01/01/2022
+19,Leon,MMR,21,0,01/01/2022
+19,Leon,Varicella,21,0,01/01/2022
+20,Darrel,Hib,20,0,01/01/2022
+20,Darrel,DTaP,20,0,01/01/2022
+20,Darrel,Polio,20,0,01/01/2022
+20,Darrel,Hepatitis B,20,0,01/01/2022
+20,Darrel,MMR,20,0,01/01/2022
+20,Darrel,Varicella,20,0,01/01/2022
+21,Jan,Hib,21,0,01/01/2022
+21,Jan,DTaP,21,0,01/01/2022
+21,Jan,Polio,21,0,01/01/2022
+21,Jan,Hepatitis B,21,0,01/01/2022
+21,Jan,MMR,21,0,01/01/2022
+21,Jan,Varicella,21,0,01/01/2022
+22,Marco,Hib,16,0,01/01/2022
+22,Marco,DTaP,16,0,01/01/2022
+22,Marco,Polio,16,0,01/01/2022
+22,Marco,Hepatitis B,16,0,01/01/2022
+22,Marco,MMR,16,0,01/01/2022
+22,Marco,Varicella,16,0,01/01/2022
+23,Mercedes,Hib,32,0,01/01/2022
+23,Mercedes,DTaP,32,0,01/01/2022
+23,Mercedes,Polio,32,0,01/01/2022
+23,Mercedes,Hepatitis B,32,0,01/01/2022
+23,Mercedes,MMR,32,0,01/01/2022
+23,Mercedes,Varicella,32,0,01/01/2022
+24,Lionel,Hib,26,0,01/01/2022
+24,Lionel,DTaP,26,0,01/01/2022
+24,Lionel,Polio,26,0,01/01/2022
+24,Lionel,Hepatitis B,26,0,01/01/2022
+24,Lionel,MMR,26,0,01/01/2022
+24,Lionel,Varicella,26,0,01/01/2022
+25,Sonia,Hib,27,0,01/01/2022
+25,Sonia,DTaP,27,0,01/01/2022
+25,Sonia,Polio,27,0,01/01/2022
+25,Sonia,Hepatitis B,27,0,01/01/2022
+25,Sonia,MMR,27,0,01/01/2022
+25,Sonia,Varicella,27,0,01/01/2022
+26,Keshaun,Hib,33,0,01/01/2022
+26,Keshaun,DTaP,33,0,01/01/2022
+26,Keshaun,Polio,33,0,01/01/2022
+26,Keshaun,Hepatitis B,33,0,01/01/2022
+26,Keshaun,MMR,33,0,01/01/2022
+26,Keshaun,Varicella,33,0,01/01/2022
+27,Rogers,Hib,33,0,01/01/2022
+27,Rogers,DTaP,33,0,01/01/2022
+27,Rogers,Polio,33,0,01/01/2022
+27,Rogers,Hepatitis B,33,0,01/01/2022
+27,Rogers,MMR,33,0,01/01/2022
+27,Rogers,Varicella,33,0,01/01/2022
+28,Mohammad,Hib,25,0,01/01/2022
+28,Mohammad,DTaP,25,0,01/01/2022
+28,Mohammad,Polio,25,0,01/01/2022
+28,Mohammad,Hepatitis B,25,0,01/01/2022
+28,Mohammad,MMR,25,0,01/01/2022
+28,Mohammad,Varicella,25,0,01/01/2022
+29,Caleigh,Hib,27,0,01/01/2022
+29,Caleigh,DTaP,27,0,01/01/2022
+29,Caleigh,Polio,27,0,01/01/2022
+29,Caleigh,Hepatitis B,27,0,01/01/2022
+29,Caleigh,MMR,27,0,01/01/2022
+29,Caleigh,Varicella,27,0,01/01/2022
+30,Marcelo,Hib,35,0,01/01/2022
+30,Marcelo,DTaP,35,0,01/01/2022
+30,Marcelo,Polio,35,0,01/01/2022
+30,Marcelo,Hepatitis B,35,0,01/01/2022
+30,Marcelo,MMR,35,0,01/01/2022
+30,Marcelo,Varicella,35,0,01/01/2022
+31,Isaac,Hib,34,0,01/01/2022
+31,Isaac,DTaP,34,0,01/01/2022
+31,Isaac,Polio,34,0,01/01/2022
+31,Isaac,Hepatitis B,34,0,01/01/2022
+31,Isaac,MMR,34,0,01/01/2022
+31,Isaac,Varicella,34,0,01/01/2022
+32,Jacky,Hib,26,0,01/01/2022
+32,Jacky,DTaP,26,0,01/01/2022
+32,Jacky,Polio,26,0,01/01/2022
+32,Jacky,Hepatitis B,26,0,01/01/2022
+32,Jacky,MMR,26,0,01/01/2022
+32,Jacky,Varicella,26,0,01/01/2022
+33,Sterling,Hib,32,0,01/01/2022
+33,Sterling,DTaP,32,0,01/01/2022
+33,Sterling,Polio,32,0,01/01/2022
+33,Sterling,Hepatitis B,32,0,01/01/2022
+33,Sterling,MMR,32,0,01/01/2022
+33,Sterling,Varicella,32,0,01/01/2022
+34,Maya,Hib,25,0,01/01/2022
+34,Maya,DTaP,25,0,01/01/2022
+34,Maya,Polio,25,0,01/01/2022
+34,Maya,Hepatitis B,25,0,01/01/2022
+34,Maya,MMR,25,0,01/01/2022
+34,Maya,Varicella,25,0,01/01/2022
+35,Elizabeth,Hib,30,0,01/01/2022
+35,Elizabeth,DTaP,30,0,01/01/2022
+35,Elizabeth,Polio,30,0,01/01/2022
+35,Elizabeth,Hepatitis B,30,0,01/01/2022
+35,Elizabeth,MMR,30,0,01/01/2022
+35,Elizabeth,Varicella,30,0,01/01/2022
+36,Lauryn,Hib,38,0,01/01/2022
+36,Lauryn,DTaP,38,0,01/01/2022
+36,Lauryn,Polio,38,0,01/01/2022
+36,Lauryn,Hepatitis B,38,0,01/01/2022
+36,Lauryn,MMR,38,0,01/01/2022
+36,Lauryn,Varicella,38,0,01/01/2022
+37,Isadore,Hib,43,0,01/01/2022
+37,Isadore,DTaP,43,0,01/01/2022
+37,Isadore,Polio,43,0,01/01/2022
+37,Isadore,Hepatitis B,43,0,01/01/2022
+37,Isadore,MMR,43,0,01/01/2022
+37,Isadore,Varicella,43,0,01/01/2022
+38,Marlee,Hib,39,0,01/01/2022
+38,Marlee,DTaP,39,0,01/01/2022
+38,Marlee,Polio,39,0,01/01/2022
+38,Marlee,Hepatitis B,39,0,01/01/2022
+38,Marlee,MMR,39,0,01/01/2022
+38,Marlee,Varicella,39,0,01/01/2022
+39,Lewis,Hib,36,0,01/01/2022
+39,Lewis,DTaP,36,0,01/01/2022
+39,Lewis,Polio,36,0,01/01/2022
+39,Lewis,Hepatitis B,36,0,01/01/2022
+39,Lewis,MMR,36,0,01/01/2022
+39,Lewis,Varicella,36,0,01/01/2022
+40,Gino,Hib,44,0,01/01/2022
+40,Gino,DTaP,44,0,01/01/2022
+40,Gino,Polio,44,0,01/01/2022
+40,Gino,Hepatitis B,44,0,01/01/2022
+40,Gino,MMR,44,0,01/01/2022
+40,Gino,Varicella,44,0,01/01/2022
+41,Assunta,Hib,38,0,01/01/2022
+41,Assunta,DTaP,38,0,01/01/2022
+41,Assunta,Polio,38,0,01/01/2022
+41,Assunta,Hepatitis B,38,0,01/01/2022
+41,Assunta,MMR,38,0,01/01/2022
+41,Assunta,Varicella,38,0,01/01/2022
+42,Otto,Hib,40,0,01/01/2022
+42,Otto,DTaP,40,0,01/01/2022
+42,Otto,Polio,40,0,01/01/2022
+42,Otto,Hepatitis B,40,0,01/01/2022
+42,Otto,MMR,40,0,01/01/2022
+42,Otto,Varicella,40,0,01/01/2022
+43,Sylvia,Hib,40,0,01/01/2022
+43,Sylvia,DTaP,40,0,01/01/2022
+43,Sylvia,Polio,40,0,01/01/2022
+43,Sylvia,Hepatitis B,40,0,01/01/2022
+43,Sylvia,MMR,40,0,01/01/2022
+43,Sylvia,Varicella,40,0,01/01/2022
+44,Davonte,Hib,38,0,01/01/2022
+44,Davonte,DTaP,38,0,01/01/2022
+44,Davonte,Polio,38,0,01/01/2022
+44,Davonte,Hepatitis B,38,0,01/01/2022
+44,Davonte,MMR,38,0,01/01/2022
+44,Davonte,Varicella,38,0,01/01/2022
+45,Jeremie,Hib,41,0,01/01/2022
+45,Jeremie,DTaP,41,0,01/01/2022
+45,Jeremie,Polio,41,0,01/01/2022
+45,Jeremie,Hepatitis B,41,0,01/01/2022
+45,Jeremie,MMR,41,0,01/01/2022
+45,Jeremie,Varicella,41,0,01/01/2022
+46,Hilma,Hib,38,0,01/01/2022
+46,Hilma,DTaP,38,0,01/01/2022
+46,Hilma,Polio,38,0,01/01/2022
+46,Hilma,Hepatitis B,38,0,01/01/2022
+46,Hilma,MMR,38,0,01/01/2022
+46,Hilma,Varicella,38,0,01/01/2022
+47,Anais,Hib,47,0,01/01/2022
+47,Anais,DTaP,47,0,01/01/2022
+47,Anais,Polio,47,0,01/01/2022
+47,Anais,Hepatitis B,47,0,01/01/2022
+47,Anais,MMR,47,0,01/01/2022
+47,Anais,Varicella,47,0,01/01/2022
+48,Hester,Hib,37,0,01/01/2022
+48,Hester,DTaP,37,0,01/01/2022
+48,Hester,Polio,37,0,01/01/2022
+48,Hester,Hepatitis B,37,0,01/01/2022
+48,Hester,MMR,37,0,01/01/2022
+48,Hester,Varicella,37,0,01/01/2022
+49,Magali,Hib,45,0,01/01/2022
+49,Magali,DTaP,45,0,01/01/2022
+49,Magali,Polio,45,0,01/01/2022
+49,Magali,Hepatitis B,45,0,01/01/2022
+49,Magali,MMR,45,0,01/01/2022
+49,Magali,Varicella,45,0,01/01/2022
+50,David,Hib,40,0,01/01/2022
+50,David,DTaP,40,0,01/01/2022
+50,David,Polio,40,0,01/01/2022
+50,David,Hepatitis B,40,0,01/01/2022
+50,David,MMR,40,0,01/01/2022
+50,David,Varicella,40,0,01/01/2022
+51,Jenny,Hib,44,0,01/01/2022
+51,Jenny,DTaP,44,0,01/01/2022
+51,Jenny,Polio,44,0,01/01/2022
+51,Jenny,Hepatitis B,44,0,01/01/2022
+51,Jenny,MMR,44,0,01/01/2022
+51,Jenny,Varicella,44,0,01/01/2022
+52,Jamie,Hib,56,0,01/01/2022
+52,Jamie,DTaP,56,0,01/01/2022
+52,Jamie,Polio,56,0,01/01/2022
+52,Jamie,Hepatitis B,56,0,01/01/2022
+52,Jamie,MMR,56,0,01/01/2022
+52,Jamie,Varicella,56,0,01/01/2022
+53,Hazel,Hib,51,0,01/01/2022
+53,Hazel,DTaP,51,0,01/01/2022
+53,Hazel,Polio,51,0,01/01/2022
+53,Hazel,Hepatitis B,51,0,01/01/2022
+53,Hazel,MMR,51,0,01/01/2022
+53,Hazel,Varicella,51,0,01/01/2022
+54,Percy,Hib,52,0,01/01/2022
+54,Percy,DTaP,52,0,01/01/2022
+54,Percy,Polio,52,0,01/01/2022
+54,Percy,Hepatitis B,52,0,01/01/2022
+54,Percy,MMR,52,0,01/01/2022
+54,Percy,Varicella,52,0,01/01/2022
+55,Annabeth,Hib,49,0,01/01/2022
+55,Annabeth,DTaP,49,0,01/01/2022
+55,Annabeth,Polio,49,0,01/01/2022
+55,Annabeth,Hepatitis B,49,0,01/01/2022
+55,Annabeth,MMR,49,0,01/01/2022
+55,Annabeth,Varicella,49,0,01/01/2022
+56,Jason,Hib,52,0,01/01/2022
+56,Jason,DTaP,52,0,01/01/2022
+56,Jason,Polio,52,0,01/01/2022
+56,Jason,Hepatitis B,52,0,01/01/2022
+56,Jason,MMR,52,0,01/01/2022
+56,Jason,Varicella,52,0,01/01/2022
+57,John,Hib,53,0,01/01/2022
+57,John,DTaP,53,0,01/01/2022
+57,John,Polio,53,0,01/01/2022
+57,John,Hepatitis B,53,0,01/01/2022
+57,John,MMR,53,0,01/01/2022
+57,John,Varicella,53,0,01/01/2022
+58,Fiona,Hib,59,0,01/01/2022
+58,Fiona,DTaP,59,0,01/01/2022
+58,Fiona,Polio,59,0,01/01/2022
+58,Fiona,Hepatitis B,59,0,01/01/2022
+58,Fiona,MMR,59,0,01/01/2022
+58,Fiona,Varicella,59,0,01/01/2022
+59,Ron,Hib,48,0,01/01/2022
+59,Ron,DTaP,48,0,01/01/2022
+59,Ron,Polio,48,0,01/01/2022
+59,Ron,Hepatitis B,48,0,01/01/2022
+59,Ron,MMR,48,0,01/01/2022
+59,Ron,Varicella,48,0,01/01/2022
+60,Jason,Hib,49,0,01/01/2022
+60,Jason,DTaP,49,0,01/01/2022
+60,Jason,Polio,49,0,01/01/2022
+60,Jason,Hepatitis B,49,0,01/01/2022
+60,Jason,MMR,49,0,01/01/2022
+60,Jason,Varicella,49,0,01/01/2022
+61,Reyna,Hib,57,0,01/01/2022
+61,Reyna,DTaP,57,0,01/01/2022
+61,Reyna,Polio,57,0,01/01/2022
+61,Reyna,Hepatitis B,57,0,01/01/2022
+61,Reyna,MMR,57,0,01/01/2022
+61,Reyna,Varicella,57,0,01/01/2022
+62,Danny,Hib,52,0,01/01/2022
+62,Danny,DTaP,52,0,01/01/2022
+62,Danny,Polio,52,0,01/01/2022
+62,Danny,Hepatitis B,52,0,01/01/2022
+62,Danny,MMR,52,0,01/01/2022
+62,Danny,Varicella,52,0,01/01/2022
+63,Talia,Hib,58,0,01/01/2022
+63,Talia,DTaP,58,0,01/01/2022
+63,Talia,Polio,58,0,01/01/2022
+63,Talia,Hepatitis B,58,0,01/01/2022
+63,Talia,MMR,58,0,01/01/2022
+63,Talia,Varicella,58,0,01/01/2022
+64,Luke,Hib,69,0,01/01/2022
+64,Luke,DTaP,69,0,01/01/2022
+64,Luke,Polio,69,0,01/01/2022
+64,Luke,Hepatitis B,69,0,01/01/2022
+64,Luke,MMR,69,0,01/01/2022
+64,Luke,Varicella,69,0,01/01/2022
+65,Lucas,Hib,62,0,01/01/2022
+65,Lucas,DTaP,62,0,01/01/2022
+65,Lucas,Polio,62,0,01/01/2022
+65,Lucas,Hepatitis B,62,0,01/01/2022
+65,Lucas,MMR,62,0,01/01/2022
+65,Lucas,Varicella,62,0,01/01/2022
+66,Leia,Hib,69,0,01/01/2022
+66,Leia,DTaP,69,0,01/01/2022
+66,Leia,Polio,69,0,01/01/2022
+66,Leia,Hepatitis B,69,0,01/01/2022
+66,Leia,MMR,69,0,01/01/2022
+66,Leia,Varicella,69,0,01/01/2022
+67,Stone,Hib,61,0,01/01/2022
+67,Stone,DTaP,61,0,01/01/2022
+67,Stone,Polio,61,0,01/01/2022
+67,Stone,Hepatitis B,61,0,01/01/2022
+67,Stone,MMR,61,0,01/01/2022
+67,Stone,Varicella,61,0,01/01/2022
+68,Issac,Hib,69,0,01/01/2022
+68,Issac,DTaP,69,0,01/01/2022
+68,Issac,Polio,69,0,01/01/2022
+68,Issac,Hepatitis B,69,0,01/01/2022
+68,Issac,MMR,69,0,01/01/2022
+68,Issac,Varicella,69,0,01/01/2022
+69,Erazer,Hib,60,0,01/01/2022
+69,Erazer,DTaP,60,0,01/01/2022
+69,Erazer,Polio,60,0,01/01/2022
+69,Erazer,Hepatitis B,60,0,01/01/2022
+69,Erazer,MMR,60,0,01/01/2022
+69,Erazer,Varicella,60,0,01/01/2022
+70,Newt,Hib,63,0,01/01/2022
+70,Newt,DTaP,63,0,01/01/2022
+70,Newt,Polio,63,0,01/01/2022
+70,Newt,Hepatitis B,63,0,01/01/2022
+70,Newt,MMR,63,0,01/01/2022
+70,Newt,Varicella,63,0,01/01/2022
+71,Will,Hib,62,0,01/01/2022
+71,Will,DTaP,62,0,01/01/2022
+71,Will,Polio,62,0,01/01/2022
+71,Will,Hepatitis B,62,0,01/01/2022
+71,Will,MMR,62,0,01/01/2022
+71,Will,Varicella,62,0,01/01/2022
+72,Nico,Hib,60,0,01/01/2022
+72,Nico,DTaP,60,0,01/01/2022
+72,Nico,Polio,60,0,01/01/2022
+72,Nico,Hepatitis B,60,0,01/01/2022
+72,Nico,MMR,60,0,01/01/2022
+72,Nico,Varicella,60,0,01/01/2022
+73,Maria,Hib,65,0,01/01/2022
+73,Maria,DTaP,65,0,01/01/2022
+73,Maria,Polio,65,0,01/01/2022
+73,Maria,Hepatitis B,65,0,01/01/2022
+73,Maria,MMR,65,0,01/01/2022
+73,Maria,Varicella,65,0,01/01/2022
+74,Oleg,Hib,68,0,01/01/2022
+74,Oleg,DTaP,68,0,01/01/2022
+74,Oleg,Polio,68,0,01/01/2022
+74,Oleg,Hepatitis B,68,0,01/01/2022
+74,Oleg,MMR,68,0,01/01/2022
+74,Oleg,Varicella,68,0,01/01/2022
+75,Susan,Hib,69,0,01/01/2022
+75,Susan,DTaP,69,0,01/01/2022
+75,Susan,Polio,69,0,01/01/2022
+75,Susan,Hepatitis B,69,0,01/01/2022
+75,Susan,MMR,69,0,01/01/2022
+75,Susan,Varicella,69,0,01/01/2022
+76,Lucy,Hib,61,0,01/01/2022
+76,Lucy,DTaP,61,0,01/01/2022
+76,Lucy,Polio,61,0,01/01/2022
+76,Lucy,Hepatitis B,61,0,01/01/2022
+76,Lucy,MMR,61,0,01/01/2022
+76,Lucy,Varicella,61,0,01/01/2022
+77,Neo,Hib,64,0,01/01/2022
+77,Neo,DTaP,64,0,01/01/2022
+77,Neo,Polio,64,0,01/01/2022
+77,Neo,Hepatitis B,64,0,01/01/2022
+77,Neo,MMR,64,0,01/01/2022
+77,Neo,Varicella,64,0,01/01/2022

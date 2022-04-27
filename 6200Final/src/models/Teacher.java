@@ -15,8 +15,9 @@ public class Teacher extends Person{
     private int Capacity;
     private List<Student> StuList;
 
-    public Teacher(String name, int age, String phoneNumber,double credits, int minStuAge, int maxStuAge, int capacity) {
+    public Teacher(String name, int age, String phoneNumber, int id, double credits, int minStuAge, int maxStuAge, int capacity) {
         super(name, age, phoneNumber);
+        this.id = id;
         this.credits = credits;
         this.minStuAge = minStuAge;
         this.maxStuAge = maxStuAge;

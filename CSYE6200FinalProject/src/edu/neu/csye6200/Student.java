@@ -84,7 +84,7 @@ public class Student extends Person{
 
     @Override
     public String toString() {
-        return "Student Name: " + super.getName() +
+        return "\n\nStudent Name: " + super.getName() +
                 " id: " + id +
                 " Age: " + super.getAge() +
                 " Parent Phone number: " + super.getPhoneNum() +

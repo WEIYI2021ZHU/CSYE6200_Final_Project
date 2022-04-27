@@ -1,6 +1,7 @@
 package edu.neu.csye6200;
 
 public class Test2 {
+	/*
 	public static void main(String[] args ){
 		Student s1 = new Student("Peter", 12, null, 1, "John", "address1", null);
 		Student s2 = new Student("Jack", 13, "1234567890", 5, "Jack.Sr", "addresssss", null);
@@ -20,4 +21,5 @@ public class Test2 {
 		System.out.println(cr);
 		System.out.println(teacher);
 	}
+	*/
 }

@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Teacher extends Person{
 
-    private static int idCount = 1;
     private int id;
     private double credits;
     private int minStuAge;
@@ -16,10 +15,9 @@ public class Teacher extends Person{
     private int Capacity;
     private List<Student> StuList;
 
-    public Teacher(String name, int age, String phoneNumber, double credits, int minStuAge, int maxStuAge, int capacity) {
+    public Teacher(String name, int age, String phoneNumber, int id, double credits, int minStuAge, int maxStuAge, int capacity) {
         super(name, age, phoneNumber);
-        this.id = idCount;
-        idCount++;
+        this.id = id;
         this.credits = credits;
         this.minStuAge = minStuAge;
         this.maxStuAge = maxStuAge;
@@ -34,7 +32,7 @@ public class Teacher extends Person{
                 StuList.add( aStu );
             }
         }
-        else System.out.println("can not insert");
+        //else System.out.println("can not insert");
     }
 
     @Override
@@ -95,7 +93,7 @@ public class Teacher extends Person{
 
     @Override
     public String toString() {
-        return "Teacher Name: " + super.getName() +
+        return "\n\nTeacher Name: " + super.getName() +
                 " id: " + id +
                 " Age: " + super.getAge() +
                 " Phone number: " + super.getPhoneNum() +

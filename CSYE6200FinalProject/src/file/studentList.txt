@@ -1,4 +1,3 @@
-Student_ID,Student_Name,Age,Parent_Name,Phone,Address,Date Accepted
 1,Maria,11,Alan,518-555-0100,201 Fake Street,09/13/2021
 2,Mitchell,12,Laverne,518-555-0101,1767 Known Street,09/21/2021
 3,Christina,8,James,518-555-0102,586 Devis Street,11/14/2021

@@ -17,7 +17,7 @@ public class LoginJFrame extends javax.swing.JFrame {
      */
     public LoginJFrame() {
         initComponents();
-        this.setSize(700, 500);
+        this.setSize(1200, 1000);
         this.setLocationRelativeTo(null);
         MainJPanel mjp = new MainJPanel(mainJPanel, this);
         mainJPanel.add(mjp);

@@ -61,7 +61,7 @@ public class DayCare {
 	}
 	public static void readFile() throws ParseException, IOException {
 		DayCare d = new DayCare();
-		BufferedReader bw = new BufferedReader(new FileReader("src/file/studentList.txt"));
+		BufferedReader bw = new BufferedReader(new FileReader("src/files/studentList.txt"));
 		String line = null;
 		while((line = bw.readLine()) != null) {
 			String[] array = line.split(",");
@@ -94,7 +94,7 @@ public class DayCare {
 		}
 		bw2.close();
 		
-		BufferedReader bw3 = new BufferedReader(new FileReader("src/file/studentImmu.txt"));
+		BufferedReader bw3 = new BufferedReader(new FileReader("src/files/studentImmu.txt"));
 		String line3 = null;
 		while((line3 = bw3.readLine()) != null) {
 			String[] array = line3.split(",");
@@ -142,7 +142,7 @@ public class DayCare {
 	}
 	/*
 	public void readTeacher() throws IOException {
-		BufferedReader bw = new BufferedReader(new FileReader("src/file/teacherList.txt"));
+		BufferedReader bw = new BufferedReader(new FileReader("src/files/teacherList.txt"));
 		String line = null;
 		while((line = bw.readLine()) != null) {
 			String[] array = line.split(",");
@@ -160,7 +160,7 @@ public class DayCare {
 	}
 	
 	public void readStudentLmmu() throws IOException, ParseException {
-		BufferedReader bw = new BufferedReader(new FileReader("src/file/studentImmu.txt"));
+		BufferedReader bw = new BufferedReader(new FileReader("src/files/studentImmu.txt"));
 		String line = null;
 		while((line = bw.readLine()) != null) {
 			String[] array = line.split(",");

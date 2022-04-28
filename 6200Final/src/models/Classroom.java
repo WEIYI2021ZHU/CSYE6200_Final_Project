@@ -11,13 +11,9 @@ public class Classroom {
 //	private int size;
 	private List<Teacher> group;
 	
-	public Classroom() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public Classroom(int id, int minAge, int maxAge, int capacity) {
-		super();
+//		super();
 		this.id = id;
 		this.minAge = minAge;
 		this.maxAge = maxAge;

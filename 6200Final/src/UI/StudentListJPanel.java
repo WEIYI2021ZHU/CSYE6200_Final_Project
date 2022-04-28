@@ -31,6 +31,8 @@ public class StudentListJPanel extends javax.swing.JPanel {
         this.jp = jp;
         this.dayCare = dayCare;
         refreshTable();
+        
+        System.out.println(dayCare.getTeachers());
     }
 
     /**

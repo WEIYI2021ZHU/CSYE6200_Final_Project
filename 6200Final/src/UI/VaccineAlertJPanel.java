@@ -5,8 +5,14 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import models.DayCare;
+import models.StudentImmu;
 
 /**
  *
@@ -15,12 +21,15 @@ import javax.swing.JPanel;
 public class VaccineAlertJPanel extends javax.swing.JPanel {
 
     private JPanel panel;
+    private DayCare dayCare;
     /**
      * Creates new form VaccineAlertJPanel
      */
-    public VaccineAlertJPanel(JPanel panel) {
+    public VaccineAlertJPanel(JPanel panel, DayCare dayCare) {
         initComponents();
         this.panel = panel;
+        this.dayCare = dayCare;
+        populateVaccineJTable();
         
         this.setSize(700, 500);
     }
@@ -35,26 +44,26 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        VaccineJTable = new javax.swing.JTable();
         BackjButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        VaccineJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Student Name", "Hib", "DTaP", "Polio", "Hepatitis B", "MMR", "Varicella", "Status"
+                "Student Name", "Age", "Hib", "DTaP", "Polio", "Hepatitis B", "MMR", "Varicella", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -65,7 +74,7 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(VaccineJTable);
 
         BackjButton.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         BackjButton.setText("Back");
@@ -115,9 +124,15 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int selectedRowIndex = jTable1.getSelectedRow();
         
-        VaccineDetailsJPanel p = new VaccineDetailsJPanel(panel);
+        int selectedRowIndex = VaccineJTable.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String name = (String)VaccineJTable.getValueAt(selectedRowIndex, 0);
+        VaccineDetailsJPanel p = new VaccineDetailsJPanel(panel, dayCare, name);
         this.panel.add(p);
         CardLayout layout = (CardLayout) panel.getLayout();
         layout.next(panel);
@@ -129,12 +144,112 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) panel.getLayout();
         layout.previous(panel);
     }//GEN-LAST:event_BackjButtonActionPerformed
+    public void populateVaccineJTable() {
+        DefaultTableModel model = (DefaultTableModel) VaccineJTable.getModel();
 
+        String status = "Normal";
+        model.setRowCount(0);
+
+        for (int i=0;i<dayCare.getStudentlmmus().size();i=i+6) {
+                dayCare.getStudentlmmus().get(i);
+                dayCare.getStudentlmmus().get(i+1);
+                Object[] row = new Object[9];
+                row[0] = dayCare.getStudentlmmus().get(i).getStudentName();
+                row[1] = dayCare.getStudentlmmus().get(i).getAge();
+                row[2] = dayCare.getStudentlmmus().get(i).getDoseAccepted();
+                row[3] = dayCare.getStudentlmmus().get(i+1).getDoseAccepted();
+                row[4] = dayCare.getStudentlmmus().get(i+2).getDoseAccepted();
+                row[5] = dayCare.getStudentlmmus().get(i+3).getDoseAccepted();
+                row[6] = dayCare.getStudentlmmus().get(i+4).getDoseAccepted();
+                row[7] = dayCare.getStudentlmmus().get(i+5).getDoseAccepted();
+                if(VaccineStatus(dayCare.getStudentlmmus().get(i)) != "Normal"||
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+1)) != "Normal"||
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+2)) != "Normal"||
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+3)) != "Normal"||
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+4)) != "Normal"||
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+5)) != "Normal"){
+                    status = "Alert";
+                }
+                row[8] = status;
+                
+                
+                model.addRow(row);
+        }
+    }
+    public static String VaccineStatus(StudentImmu si) {
+        
+        Date date = new Date();
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(date);
+        
+        String name = si.getVaccineName();
+        switch(name){
+            case("Hib"):
+                if(si.getDoseAccepted()>0){
+                    return "Normal";
+                }
+                break;
+            case("DTaP"):
+                Calendar cal2 = Calendar.getInstance();
+                cal2.setTime(si.getDateAccepted());
+                cal2.add(Calendar.YEAR, (si.getAge()/12)-4);
+                
+                if(si.getAge()<23 && si.getDoseAccepted() == 4){
+                    return "Normal";
+                }else if(si.getAge()>=23 && si.getAge()<24 && si.getDoseAccepted() == 4){
+                    return "Upcoming";
+                }
+                else if(si.getAge()>=24 && cal2.after(cal1) && si.getDoseAccepted() == 4){
+                    return "Normal";
+                }
+                break;
+            case("Polio"):
+                
+                if(si.getAge()<47 && si.getDoseAccepted() == 3){
+                    return "Normal";
+                }else if(si.getAge()>=47 && si.getAge()<48 && si.getDoseAccepted() == 3){
+                    return "Upcoming";
+                }else if(si.getAge()>=48 && si.getDoseAccepted() == 4){
+                    return "Normal";
+                }
+                break;
+            case("Hepatitis B"):
+                if(si.getDoseAccepted() == 3){
+                    return "Normal";
+                }
+                break;
+            case("MMR"):
+                if(si.getAge()<11 && si.getDoseAccepted() == 0){
+                    return "Normal";
+                }else if(si.getAge()>=11 && si.getAge()<12 && si.getDoseAccepted() == 0){
+                    return "Upcoming";
+                } else if(si.getAge()>=12 && si.getDoseAccepted() == 1){
+                    return "Upcoming";
+                } else if(si.getAge()>=12 && si.getDoseAccepted() == 2){
+                    return "Normal";
+                }
+                break;
+            case("Varicella"):
+                if(si.getAge()<11 && si.getDoseAccepted() == 0){
+                    return "Normal";
+                }else if(si.getAge()>=11 && si.getAge()<12 && si.getDoseAccepted() == 0){
+                    return "Upcoming";
+                } else if(si.getAge()>=12 && si.getDoseAccepted() == 1){
+                    return "Upcoming";
+                } else if(si.getAge()>=12 && si.getDoseAccepted() == 2){
+                    return "Normal";
+                } 
+                break;
+            default:
+                return "Overdue";
+        }
+        return "Overdue";
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackjButton;
+    private javax.swing.JTable VaccineJTable;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

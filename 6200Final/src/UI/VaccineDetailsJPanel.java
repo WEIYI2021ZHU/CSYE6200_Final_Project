@@ -5,8 +5,13 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import models.DayCare;
+import models.StudentImmu;
 
 /**
  *
@@ -15,12 +20,17 @@ import javax.swing.JPanel;
 public class VaccineDetailsJPanel extends javax.swing.JPanel {
 
     private JPanel panel;
+    private String studentName;
+    private DayCare dayCare;
     /**
      * Creates new form VaccineDetails
      */
-    public VaccineDetailsJPanel(JPanel panel) {
+    public VaccineDetailsJPanel(JPanel panel, DayCare dayCare, String studentName) {
         initComponents();
         this.panel = panel;
+        this.dayCare = dayCare;
+        this.studentName = studentName;
+        populateVaccineDetailsJTable();
         
         this.setSize(700, 500);
     }
@@ -35,11 +45,11 @@ public class VaccineDetailsJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        VaccineDetailsJTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        VaccineDetailsJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,7 +75,7 @@ public class VaccineDetailsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(VaccineDetailsJTable);
 
         jButton1.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
         jButton1.setText("Send Alert");
@@ -122,12 +132,30 @@ public class VaccineDetailsJPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JOptionPane.showMessageDialog(null, "Vaccine reminders have been sent to parents of children", "Sending", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    private void populateVaccineDetailsJTable() {
+        DefaultTableModel model = (DefaultTableModel) VaccineDetailsJTable.getModel();
+        model.setRowCount(0);
+        
+        List<StudentImmu> result = null;
+        List<StudentImmu> si = dayCare.getStudentlmmus();
+        
+        result = si.stream().filter(stuI -> stuI.getStudentName().equals(studentName)).collect(Collectors.toList());
+        
+        System.out.println(result);
+        for(StudentImmu studentImmu: result){
+            Object[] row = new Object[4];
+            row[0] = studentImmu.getVaccineName();
+            row[1] = studentImmu.getDoseAccepted();
+            row[2] = studentImmu.getDateAccepted();
+            row[3] = VaccineAlertJPanel.VaccineStatus(studentImmu);
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable VaccineDetailsJTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

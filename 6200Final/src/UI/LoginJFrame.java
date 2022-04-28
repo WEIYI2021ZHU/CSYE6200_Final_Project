@@ -6,6 +6,11 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.DayCare;
 
 /**
  *
@@ -15,11 +20,12 @@ public class LoginJFrame extends javax.swing.JFrame {
     /**
      * Creates new form LoginJFrame
      */
-    public LoginJFrame() {
+    public LoginJFrame() throws ParseException, IOException {
+        DayCare daycare = DayCare.readFile();
         initComponents();
         this.setSize(1200, 1000);
         this.setLocationRelativeTo(null);
-        MainJPanel mjp = new MainJPanel(mainJPanel, this);
+        MainJPanel mjp = new MainJPanel(mainJPanel, this, daycare);
         mainJPanel.add(mjp);
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
@@ -88,7 +94,13 @@ public class LoginJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginJFrame().setVisible(true);
+                try {
+                    new LoginJFrame().setVisible(true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

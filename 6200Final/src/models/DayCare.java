@@ -15,6 +15,47 @@ public class DayCare {
 	private List<Teacher> teachers = new ArrayList<Teacher>();
 	private List<StudentImmu> studentlmmus = new ArrayList<StudentImmu>();
 	private List<Vaccine> vaccines = new ArrayList<Vaccine>();
+
+    public List<Classroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public void setClassrooms(List<Classroom> classrooms) {
+        this.classrooms = classrooms;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
+    }
+
+    public List<StudentImmu> getStudentlmmus() {
+        return studentlmmus;
+    }
+
+    public void setStudentlmmus(List<StudentImmu> studentlmmus) {
+        this.studentlmmus = studentlmmus;
+    }
+
+    public List<Vaccine> getVaccines() {
+        return vaccines;
+    }
+
+    public void setVaccines(List<Vaccine> vaccines) {
+        this.vaccines = vaccines;
+    }
+        
 	public void addClasroom(Classroom c) {
 		classrooms.add(c);
 	}
@@ -59,7 +100,7 @@ public class DayCare {
 		}
 		System.out.println(classrooms);
 	}
-	public static void readFile() throws ParseException, IOException {
+	public static DayCare readFile() throws ParseException, IOException {
 		DayCare d = new DayCare();
 		BufferedReader bw = new BufferedReader(new FileReader("src/files/studentList.txt"));
 		String line = null;
@@ -77,7 +118,7 @@ public class DayCare {
 		}
 		bw.close();
 		
-		BufferedReader bw2 = new BufferedReader(new FileReader("src/file/teacherList.txt"));
+		BufferedReader bw2 = new BufferedReader(new FileReader("src/files/teacherList.txt"));
 		String line2 = null;
 		while((line2 = bw2.readLine()) != null) {
 			String[] array = line2.split(",");
@@ -138,7 +179,7 @@ public class DayCare {
 		d.setStudentImmu();
 		d.splite();
 		d.setGroup();
-		
+		return d;
 	}
 	/*
 	public void readTeacher() throws IOException {

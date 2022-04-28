@@ -7,6 +7,7 @@ package UI;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import models.DayCare;
 
 /**
  *
@@ -16,13 +17,15 @@ public class MainJPanel extends javax.swing.JPanel {
 
     private JPanel mainJPanel;
     private JFrame frame;
+    private DayCare dayCare;
     /**
      * Creates new form MainJPanel
      */
-    public MainJPanel(JPanel mainJPanel, JFrame frame) {
+    public MainJPanel(JPanel mainJPanel, JFrame frame, DayCare dayCare) {
         initComponents();
         this.mainJPanel = mainJPanel;
         this.frame = frame;
+        this.dayCare = dayCare;
        
         this.setSize(700,500);
     }
@@ -96,7 +99,7 @@ public class MainJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void VaccineAlertJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaccineAlertJButtonActionPerformed
-        TeacherJPanel tjp = new TeacherJPanel(mainJPanel);
+        TeacherJPanel tjp = new TeacherJPanel(mainJPanel, dayCare);
         mainJPanel.add(tjp);
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);

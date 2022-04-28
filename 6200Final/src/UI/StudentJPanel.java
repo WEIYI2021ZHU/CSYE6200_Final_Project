@@ -13,7 +13,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import models.DayCare;
 /**
  *
  * @author HP
@@ -24,13 +23,11 @@ public class StudentJPanel extends javax.swing.JPanel {
      * Creates new form CreateJPanel
      */
     private JPanel mainJPanel;
-    private DayCare dayCare;
     //Student student;
     
-    public StudentJPanel(JPanel mainJPanel, DayCare dayCare) {
+    public StudentJPanel(JPanel mainJPanel) {
         this.mainJPanel = mainJPanel;
         initComponents();
-        this.dayCare = dayCare;
        //this.student = student;
     }
 
@@ -188,7 +185,21 @@ public class StudentJPanel extends javax.swing.JPanel {
             error += "Age is Empty!!\n";
         }
         
-        
+        if (ID.equals("")){
+            error+= "ID is Empty!!\n";
+        }
+        else{
+            try{
+                int id = Integer.parseInt(ID);
+                if(id<1 || id>77) {
+                    error += "Student ID is from 1 to 77!!\n";
+                }
+                
+            }
+            catch(NumberFormatException e) {
+                error += "Please fill in Integer for Student ID!!\n";
+            }
+        }
         
         if (pName.equals("")){
             error += "Parent's Name is Empty!!\n";
@@ -203,7 +214,6 @@ public class StudentJPanel extends javax.swing.JPanel {
         }
         else{
             JOptionPane.showMessageDialog(this, "Student Information Saved!");
-            
             StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel);
             mainJPanel.add(sip);
             CardLayout layout = (CardLayout)mainJPanel.getLayout();

@@ -87,6 +87,14 @@ public class Classroom {
 		}
 		return sb.toString();
 	}
+        
+        public String getAllTeacher1() {
+		StringBuilder sb = new StringBuilder();
+		for(Teacher t : getGroup()) {
+			sb.append(" Teacher: ").append(t.getName()).append("\n");
+		}
+		return sb.toString();
+	}
 
 	@Override
 	public String toString() {

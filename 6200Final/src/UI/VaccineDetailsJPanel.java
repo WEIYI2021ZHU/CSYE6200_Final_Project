@@ -51,20 +51,20 @@ public class VaccineDetailsJPanel extends javax.swing.JPanel {
 
         VaccineDetailsJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Vaccine Name", "Dose", "Date of Vaccination", "Status"
+                "Vaccine Name", "Age at the time of vaccination", "Dose", "Date of Vaccination", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -143,11 +143,12 @@ public class VaccineDetailsJPanel extends javax.swing.JPanel {
         
         System.out.println(result);
         for(StudentImmu studentImmu: result){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = studentImmu.getVaccineName();
-            row[1] = studentImmu.getDoseAccepted();
-            row[2] = studentImmu.getDateAccepted();
-            row[3] = VaccineAlertJPanel.VaccineStatus(studentImmu);
+            row[1] = studentImmu.getAge();
+            row[2] = studentImmu.getDoseAccepted();
+            row[3] = studentImmu.getDateAccepted();
+            row[4] = VaccineAlertJPanel.VaccineStatus(studentImmu);
             model.addRow(row);
         }
     }

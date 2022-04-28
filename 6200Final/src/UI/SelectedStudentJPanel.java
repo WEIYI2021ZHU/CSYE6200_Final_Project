@@ -150,9 +150,30 @@ public void refreshTable() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         int row = StudentTable.getSelectedRow();
+        int row = StudentTable.getSelectedRow();
+        int age = (int)StudentTable.getValueAt(row,2);
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if(teacherId <= 3 && age > 12){
+        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 6-12 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if((6 > teacherId && teacherId > 3) && (age > 24 || age < 12)){
+        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 13-24 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if((8 > teacherId && teacherId > 5) && (age > 35 || age < 25)){
+        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 25-35 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if((10 > teacherId && teacherId > 7) && (age > 47 || age < 35)){
+        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 36-47 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         int s = (int)StudentTable.getValueAt(row,0);

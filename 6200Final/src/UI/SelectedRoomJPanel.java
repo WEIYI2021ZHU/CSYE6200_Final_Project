@@ -12,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 import models.Classroom;
 import models.DayCare;
 
-
 /**
  *
  * @author changningliu
@@ -35,10 +34,8 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
         this.setSize(700, 500);
 //        this.setSize(1000, 500);
     }
-    
-    
 
-   public void refreshTable() {
+    public void refreshTable() {
 
         DefaultTableModel model = (DefaultTableModel) RoomTable.getModel();
         model.setRowCount(0);
@@ -115,17 +112,18 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(422, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(476, 476, 476))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton3)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(539, 539, 539)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +134,9 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(32, 32, 32)
                 .addComponent(jButton2)
-                .addGap(400, 400, 400))
+                .addGap(408, 408, 408))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -152,17 +150,31 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int row = RoomTable.getSelectedRow();
-//        if(row<0){
-//            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
-//            return;
-//        }
+        int size = (int) RoomTable.getValueAt(row, 2);
+        int capacity = (int) RoomTable.getValueAt(row, 3);
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (size == capacity) {
+            JOptionPane.showMessageDialog(null, "This room is full,Please choose another room!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
 //        ClassRoom s = (ClassRoom)TeacherTable.getValueAt(row,0);
 //        SelectedStudentJPanel vs = new SelectedStudentJPanel(mainJPanel, s);
 //        MainJPanel tjp = new MianJPanel(mainJPanel);
 //        mainJPanel.add(tjp);
 //        CardLayout layout = (CardLayout)mainJPanel.getLayout();
 //        layout.next(mainJPanel);
-    JOptionPane.showMessageDialog(this, " is submitted!");
+        JOptionPane.showMessageDialog(this, "Submited Successfully!");
+        
+        
+        TeacherJPanel vs = new TeacherJPanel(userProcessContainer, dayCare);
+        userProcessContainer.add("ViewSupplier", vs);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

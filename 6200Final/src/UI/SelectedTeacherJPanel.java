@@ -187,6 +187,17 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+//        String selectedTeacherName = (String) TeacherTable.getValueAt(row, 1);
+//        Teacher selectedTeacher = null;
+//        
+//        for (Teacher e : dayCare.getTeachers()) {
+//            if (e.getName().equals(selectedTeacherName)) {
+//                selectedTeacher = e;
+//                break;
+//            }
+//        }
+        
         int t = (int)TeacherTable.getValueAt(row,0);
         SelectedStudentJPanel vs = new SelectedStudentJPanel(mainJPanel, dayCare, t);
         mainJPanel.add(vs);

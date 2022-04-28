@@ -8,6 +8,12 @@ package UI;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -24,10 +30,11 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
      */
     private JPanel mainJPanel;
     //Student student;
-    
-    public StudentImmunizationJPanel(JPanel mainJPanel) {
-        this.mainJPanel = mainJPanel;
+    private Date ageD;
+    public StudentImmunizationJPanel(JPanel mainJPanel, Date age) {
         initComponents();
+        this.mainJPanel = mainJPanel;
+        this.ageD = age;
        //this.student = student;
     }
 
@@ -45,7 +52,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
         lblModel = new javax.swing.JLabel();
         lblColor = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
-        txtID = new javax.swing.JTextField();
+        txtDoes = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         canvas1 = new java.awt.Canvas();
@@ -118,7 +125,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDoes, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(258, 258, 258))
@@ -140,7 +147,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblModel)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -165,20 +172,47 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
         
         String name=(String)jComboBox1.getSelectedItem();
         String date=txtDate.getText();
-        String dose = txtID.getText();
-        
-        if (name.equals("")||date.equals("")||dose.equals("")){
-            JOptionPane.showMessageDialog(this, "Message is Empty!!");
-            jComboBox1.setSelectedItem("");
-            txtDate.setText("");
-            txtID.setText("");
+        String dose = txtDoes.getText();
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String error = "";
+        Date sDate = new Date();
+        if (name.equals("")){
+            error += "Please select a vaccine!!\n";
         }
         
+        if(dose.isEmpty()) {
+            error += "Please enter the number of dose!\n";
+        }
+        
+        if(date.isEmpty()) {
+            error += "Please enter the date that accepted the vaccine!\n";
+        }
+        else{
+            try{
+                sDate = dateFormat.parse(date);
+                if(sDate.before(ageD)) {
+                    error += "Please enter a vaid date after the born date!\n";
+                }
+                
+            } catch (ParseException ex) {
+                error += "Please enter a valid Date Format like MM/dd/yyyy !\n";
+                Logger.getLogger(StudentImmunizationJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if(error.isEmpty()) {
+            jComboBox1.setSelectedItem("");
+            txtDate.setText("");
+            txtDoes.setText("");
+            JOptionPane.showMessageDialog(this, "Student Immunization Information Saved!");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, error);
+        }
+        
+        
         // to ensure owner name does not contain digital number
-        jComboBox1.setSelectedItem("");
-        txtDate.setText("");
-        txtID.setText("");
-        JOptionPane.showMessageDialog(this, "Student Immunization Information Saved!");
+        
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -205,7 +239,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblModel;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtDoes;
     // End of variables declaration//GEN-END:variables
 
     private boolean isNumeric(String ID) {

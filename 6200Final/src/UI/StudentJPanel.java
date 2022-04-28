@@ -242,11 +242,14 @@ public class StudentJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, error);
         }
         else{
-            Date date = Calendar.getInstance().getTime();
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
             Student s = new Student(name, ageD, phone, id, pName, address, date);
             dayCare.addStudent(s);
             JOptionPane.showMessageDialog(this, "Student Information Saved!");
-            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel);
+            cal.add(Calendar.MONTH, -ageD);
+            Date newD = cal.getTime();
+            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD);
             mainJPanel.add(sip);
             CardLayout layout = (CardLayout)mainJPanel.getLayout();
             layout.next(mainJPanel);

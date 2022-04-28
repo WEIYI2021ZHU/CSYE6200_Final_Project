@@ -188,7 +188,7 @@ public class DayCare {
 		Classroom cr3 = ClassroomFactory.getClassroom(3, 25, 35, 3);
 		Classroom cr4 = ClassroomFactory.getClassroom(4, 36, 47, 3);
 		Classroom cr5 = ClassroomFactory.getClassroom(5, 48, 59, 2);
-		Classroom cr6 = ClassroomFactory.getClassroom(6, 60, 100, 2);
+		Classroom cr6 = ClassroomFactory.getClassroom(6, 60, 72, 2);
 		d.addClasroom(cr1);
 		d.addClasroom(cr2);
 		d.addClasroom(cr3);

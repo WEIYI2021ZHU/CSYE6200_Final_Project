@@ -39,15 +39,15 @@ public class MainJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
+        btnStudent = new javax.swing.JButton();
         VaccineAlertJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        jButton3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
-        jButton3.setText("I am Student");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnStudent.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        btnStudent.setText("I am Student");
+        btnStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnStudentActionPerformed(evt);
             }
         });
 
@@ -73,7 +73,7 @@ public class MainJPanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(133, 133, 133)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                 .addComponent(VaccineAlertJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(133, 133, 133))
@@ -85,18 +85,18 @@ public class MainJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(VaccineAlertJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(129, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        StudentJPanel cjp = new StudentJPanel(mainJPanel);
+    private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
+        StudentJPanel cjp = new StudentJPanel(mainJPanel, dayCare);
         mainJPanel.add(cjp);
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnStudentActionPerformed
 
     private void VaccineAlertJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaccineAlertJButtonActionPerformed
         TeacherJPanel tjp = new TeacherJPanel(mainJPanel, dayCare);
@@ -108,7 +108,7 @@ public class MainJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton VaccineAlertJButton;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnStudent;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

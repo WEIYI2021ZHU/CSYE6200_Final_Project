@@ -147,7 +147,7 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
     public void populateVaccineJTable() {
         DefaultTableModel model = (DefaultTableModel) VaccineJTable.getModel();
 
-        String status = "Normal";
+        String status = "Alert";
         model.setRowCount(0);
 
         for (int i=0;i<dayCare.getStudentlmmus().size();i=i+6) {
@@ -161,18 +161,19 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
                 row[4] = dayCare.getStudentlmmus().get(i+3).getDoseAccepted();
                 row[5] = dayCare.getStudentlmmus().get(i+4).getDoseAccepted();
                 row[6] = dayCare.getStudentlmmus().get(i+5).getDoseAccepted();
-                if(VaccineStatus(dayCare.getStudentlmmus().get(i)) != "Normal"||
-                        VaccineStatus(dayCare.getStudentlmmus().get(i+1)) != "Normal"||
-                        VaccineStatus(dayCare.getStudentlmmus().get(i+2)) != "Normal"||
-                        VaccineStatus(dayCare.getStudentlmmus().get(i+3)) != "Normal"||
-                        VaccineStatus(dayCare.getStudentlmmus().get(i+4)) != "Normal"||
-                        VaccineStatus(dayCare.getStudentlmmus().get(i+5)) != "Normal"){
-                    status = "Alert";
+                if(VaccineStatus(dayCare.getStudentlmmus().get(i)) == "Normal"&&
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+1)) == "Normal"&&
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+2)) == "Normal"&&
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+3)) == "Normal"&&
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+4)) == "Normal"&&
+                        VaccineStatus(dayCare.getStudentlmmus().get(i+5)) == "Normal"){
+                    status = "Normal";
                 }
                 row[7] = status;
                 
                 
                 model.addRow(row);
+                status = "Alert";
         }
     }
     public static String VaccineStatus(StudentImmu si) {

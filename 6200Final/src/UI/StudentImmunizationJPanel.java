@@ -191,7 +191,8 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
             try{
                 sDate = dateFormat.parse(date);
                 if(sDate.before(ageD)) {
-                    error += "Please enter a vaid date after the born date!\n";
+                    String s = dateFormat.format(ageD);
+                    error += "Please enter a vaid date after the born date "+s+"!\n";
                 }
                 
             } catch (ParseException ex) {

@@ -5,8 +5,15 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import models.Classroom;
 import models.DayCare;
+import models.Student;
+import models.Teacher;
 
 /**
  *
@@ -23,6 +30,7 @@ public class StudentListJPanel extends javax.swing.JPanel {
         initComponents();
         this.jp = jp;
         this.dayCare = dayCare;
+        refreshTable();
     }
 
     /**
@@ -35,29 +43,29 @@ public class StudentListJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblStudent = new javax.swing.JLabel();
-        tableStudent = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ScrollPnae = new javax.swing.JScrollPane();
+        studentTable = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
 
         lblStudent.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblStudent.setText("Student List");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        studentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Student ID", "Name", "Age", "Parent Name", "Phone", "Teacher", "Classroom"
+                "Student ID", "Name", "Age", "Parent Name", "Phone", "Teacher", "Classroom", "Walk-in Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -68,15 +76,16 @@ public class StudentListJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tableStudent.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
+        ScrollPnae.setViewportView(studentTable);
+        if (studentTable.getColumnModel().getColumnCount() > 0) {
+            studentTable.getColumnModel().getColumn(0).setResizable(false);
+            studentTable.getColumnModel().getColumn(1).setResizable(false);
+            studentTable.getColumnModel().getColumn(2).setResizable(false);
+            studentTable.getColumnModel().getColumn(3).setResizable(false);
+            studentTable.getColumnModel().getColumn(4).setResizable(false);
+            studentTable.getColumnModel().getColumn(5).setResizable(false);
+            studentTable.getColumnModel().getColumn(6).setResizable(false);
+            studentTable.getColumnModel().getColumn(7).setResizable(false);
         }
 
         btnBack.setText("<<Back");
@@ -91,14 +100,16 @@ public class StudentListJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tableStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
                         .addComponent(btnBack)
                         .addGap(183, 183, 183)
-                        .addComponent(lblStudent)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addComponent(lblStudent))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(ScrollPnae, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,9 +118,9 @@ public class StudentListJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack)
                     .addComponent(lblStudent))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(tableStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(72, 72, 72)
+                .addComponent(ScrollPnae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(243, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,11 +130,35 @@ public class StudentListJPanel extends javax.swing.JPanel {
         layout.previous(jp);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel) studentTable.getModel();
+        model.setRowCount(0);
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        for(Classroom c: dayCare.getClassrooms()) {
+            int classID = c.getId();
+            for(Teacher t: c.getGroup()) {
+                for(Student stu: t.getStuList()) {
+                    Object[] row = new Object[8];
+                    row[0] = stu.getId();
+                    row[1] = stu.getName();
+                    row[2] = stu.getAge();
+                    row[3] = stu.getParentName();
+                    row[4] = stu.getPhoneNum();
+                    row[5] = t.getName();
+                    row[6] = classID;
+                    Date date = stu.getWalkInDate();
+                    String sDate = dateFormat.format(date);
+                    row[7] = sDate;
+                    model.addRow(row);
+                }
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPnae;
     private javax.swing.JButton btnBack;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblStudent;
-    private javax.swing.JScrollPane tableStudent;
+    private javax.swing.JTable studentTable;
     // End of variables declaration//GEN-END:variables
 }

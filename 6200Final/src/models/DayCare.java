@@ -39,6 +39,15 @@ public class DayCare {
     public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
     }
+    
+    public Teacher searchTeacher(int id) {
+        for(Teacher t: teachers) {
+            if(t.getId() == id) {
+                return t;
+            }
+        }
+        return null;
+    }
 
     public List<StudentImmu> getStudentlmmus() {
         return studentlmmus;

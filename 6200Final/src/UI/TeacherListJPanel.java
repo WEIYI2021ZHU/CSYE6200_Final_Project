@@ -5,11 +5,15 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import models.DayCare;
 import models.Classroom;
+import models.Student;
+import models.Teacher;
 
 /**
  *
@@ -23,19 +27,30 @@ public class TeacherListJPanel extends javax.swing.JPanel {
     
     private JPanel jpanel;
     private DayCare dayCare;
+    private List<Student> students;
     public TeacherListJPanel(JPanel jpanel, DayCare daycare) {
         initComponents();
         this.jpanel = jpanel;
         this.dayCare = daycare;
+        this.students = new ArrayList<>();
+        txtName.setEditable(false);
+        txtID.setEditable(false);
     }
     
     private void refreshTable() {
         DefaultTableModel model = (DefaultTableModel) tableTeacher.getModel();
         model.setRowCount(0);
         for(Classroom c: dayCare.getClassrooms()) {
-            int count = c.getCapacity();
-            for(int i=0; i<count; i++) {
-                
+            int id = c.getId();
+            for(Teacher teacher: c.getGroup()) {
+                Object[] row = new Object[6];
+                row[0] = teacher.getName();
+                row[1] = teacher.getId();
+                row[2] = teacher.getAge();
+                row[3] = teacher.getCredits();
+                row[4] = teacher.getPhoneNum();
+                row[5] = id;
+                model.addRow(row);
             }
         }
     }
@@ -58,26 +73,29 @@ public class TeacherListJPanel extends javax.swing.JPanel {
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         lblStuName = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        lblStuNames = new javax.swing.JLabel();
 
         lblTeacher.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblTeacher.setText("Teachers List");
 
         tableTeacher.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Age", "Phone", "Classroom", "Date"
+                "Name", "ID", "Age", "Credits", "Phone", "Classroom"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -95,6 +113,7 @@ public class TeacherListJPanel extends javax.swing.JPanel {
             tableTeacher.getColumnModel().getColumn(2).setResizable(false);
             tableTeacher.getColumnModel().getColumn(3).setResizable(false);
             tableTeacher.getColumnModel().getColumn(4).setResizable(false);
+            tableTeacher.getColumnModel().getColumn(5).setResizable(false);
         }
 
         btnBack.setText("<<Back");
@@ -105,6 +124,11 @@ public class TeacherListJPanel extends javax.swing.JPanel {
         });
 
         btnGenerate.setText("Generate");
+        btnGenerate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerateActionPerformed(evt);
+            }
+        });
 
         btnView.setText("View Details");
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -113,39 +137,47 @@ public class TeacherListJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblName.setText("Teacher: ");
+        lblName.setText("Teacher Name: ");
 
         lblStuName.setText("Students:");
+
+        lblID.setText("Teacher ID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
-                .addComponent(lblTeacher)
-                .addGap(412, 412, 412))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addComponent(btnGenerate))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
+                        .addGap(72, 72, 72)
+                        .addComponent(btnBack)
+                        .addGap(216, 216, 216)
+                        .addComponent(lblTeacher))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnGenerate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnView)
+                        .addGap(238, 238, 238))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblStuName)
-                            .addComponent(lblName))
+                            .addComponent(lblName)
+                            .addComponent(lblID))
                         .addGap(18, 18, 18)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnView)
-                .addGap(237, 237, 237))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStuNames, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
+                        .addGap(409, 409, 409))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,17 +191,23 @@ public class TeacherListJPanel extends javax.swing.JPanel {
                         .addComponent(btnBack)))
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGenerate)
                     .addComponent(btnView))
-                .addGap(21, 21, 21)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblStuName)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStuName)
+                    .addComponent(lblStuNames))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,8 +227,25 @@ public class TeacherListJPanel extends javax.swing.JPanel {
         
         DefaultTableModel model = (DefaultTableModel) tableTeacher.getModel();
         String name = model.getValueAt(selectedRowIndex, 0).toString();
+        int id = (int) model.getValueAt(selectedRowIndex, 1);
+        Teacher teacher = dayCare.searchTeacher(id);
+        students = teacher.getStuList();
+        txtName.setText(name);
+        txtID.setText(String.valueOf(id));
+        String stus = "";
+        for(Student stu: students) {
+            stus += stu.getName();
+            stus += "; ";
+        }
+        
+        lblStuNames.setText(stus);
+        
         
     }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
+        refreshTable();
+    }//GEN-LAST:event_btnGenerateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -198,10 +253,13 @@ public class TeacherListJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnGenerate;
     private javax.swing.JButton btnView;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblStuName;
+    private javax.swing.JLabel lblStuNames;
     private javax.swing.JLabel lblTeacher;
     private javax.swing.JTable tableTeacher;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

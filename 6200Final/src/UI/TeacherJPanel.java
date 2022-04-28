@@ -132,6 +132,10 @@ public class TeacherJPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        SelectedTeacherJPanel vajp = new SelectedTeacherJPanel(mainJPanel, dayCare);
+        mainJPanel.add(vajp);
+        CardLayout layout = (CardLayout)mainJPanel.getLayout();
+        layout.next(mainJPanel);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void VaccineAlertJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaccineAlertJButtonActionPerformed

@@ -26,13 +26,14 @@ public class Teacher extends Person{
     }
 
 
-    public void setStuList(Student aStu) {
+    public boolean setStuList(Student aStu) {
         if( StuList.size() < Capacity ) {
             if( !StuList.contains(aStu) && aStu.getAge() >= minStuAge && aStu.getAge()<=maxStuAge){
                 StuList.add( aStu );
+                return true;
             }
         }
-        //else System.out.println("can not insert");
+        return false;
     }
 
     @Override

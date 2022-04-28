@@ -15,6 +15,7 @@ public class DayCare {
 	private List<Teacher> teachers = new ArrayList<Teacher>();
 	private List<StudentImmu> studentlmmus = new ArrayList<StudentImmu>();
 	private List<Vaccine> vaccines = new ArrayList<Vaccine>();
+        private List<Student> used = new ArrayList<Student>();
 
     public List<Classroom> getClassrooms() {
         return classrooms;
@@ -88,14 +89,18 @@ public class DayCare {
 		}
 		System.out.println(students);
 	}
-	public void splite() {
-		for(Teacher t : teachers) {
-			for(Student s : students) {
-				t.setStuList(s);
-			}
-		}
-		System.out.println(teachers);
-	}
+    public void splite() {
+        for (Teacher t : teachers) {
+            for (Student s : students) {
+                if (s.isHasTeacher() == false) {
+                    if (t.setStuList(s) == true) {
+                        s.setHasTeacher(true);
+                    }
+                }
+            }
+        }
+        System.out.println(teachers);
+    }
 	public void showStudentImmus() {
 		for(StudentImmu s : studentlmmus) {
 			System.out.println(s);

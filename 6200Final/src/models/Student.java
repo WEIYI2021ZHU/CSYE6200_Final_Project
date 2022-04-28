@@ -11,6 +11,7 @@ public class Student extends Person{
     private String address;
     private Date walkInDate;
     private List<StudentImmu> immuInfo;
+    private boolean hasTeacher = false;
 
     public Student(String name, int age, String phoneNum ,int id, String parentName, String address, Date walkInDate) {
         super(name, age, phoneNum);
@@ -40,6 +41,14 @@ public class Student extends Person{
         }
         return false;
 
+    }
+
+    public boolean isHasTeacher() {
+        return hasTeacher;
+    }
+
+    public void setHasTeacher(boolean hasTeacher) {
+        this.hasTeacher = hasTeacher;
     }
 
     public int getId() {

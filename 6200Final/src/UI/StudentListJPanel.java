@@ -6,6 +6,7 @@ package UI;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import models.DayCare;
 
 /**
  *
@@ -17,9 +18,11 @@ public class StudentListJPanel extends javax.swing.JPanel {
      * Creates new form StudentList
      */
     private JPanel jp;
-    public StudentListJPanel(JPanel jp) {
+    private DayCare dayCare;
+    public StudentListJPanel(JPanel jp, DayCare dayCare) {
         initComponents();
         this.jp = jp;
+        this.dayCare = dayCare;
     }
 
     /**

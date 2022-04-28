@@ -8,6 +8,8 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import models.DayCare;
+import models.Classroom;
 
 /**
  *
@@ -20,9 +22,22 @@ public class TeacherListJPanel extends javax.swing.JPanel {
      */
     
     private JPanel jpanel;
-    public TeacherListJPanel(JPanel jpanel) {
+    private DayCare dayCare;
+    public TeacherListJPanel(JPanel jpanel, DayCare daycare) {
         initComponents();
         this.jpanel = jpanel;
+        this.dayCare = daycare;
+    }
+    
+    private void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel) tableTeacher.getModel();
+        model.setRowCount(0);
+        for(Classroom c: dayCare.getClassrooms()) {
+            int count = c.getCapacity();
+            for(int i=0; i<count; i++) {
+                
+            }
+        }
     }
 
     /**

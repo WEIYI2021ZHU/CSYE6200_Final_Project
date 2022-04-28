@@ -117,14 +117,14 @@ public class TeacherJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
-        TeacherListJPanel tljp = new TeacherListJPanel(mainJPanel);
+        TeacherListJPanel tljp = new TeacherListJPanel(mainJPanel, dayCare);
         mainJPanel.add(tljp);
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
     }//GEN-LAST:event_btnTeacherActionPerformed
 
     private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
-        StudentListJPanel sljp = new StudentListJPanel(mainJPanel);
+        StudentListJPanel sljp = new StudentListJPanel(mainJPanel , dayCare);
         mainJPanel.add(sljp);
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);

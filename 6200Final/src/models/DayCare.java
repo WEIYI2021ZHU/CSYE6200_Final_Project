@@ -16,6 +16,7 @@ public class DayCare {
 	private List<StudentImmu> studentlmmus = new ArrayList<StudentImmu>();
 	private List<Vaccine> vaccines = new ArrayList<Vaccine>();
         private List<Student> used = new ArrayList<Student>();
+        private int max_ID = 0;
 
     public List<Classroom> getClassrooms() {
         return classrooms;
@@ -49,6 +50,10 @@ public class DayCare {
         }
         return null;
     }
+    
+    public int getNextID() {
+        return max_ID + 1;
+    }
 
     public List<StudentImmu> getStudentlmmus() {
         return studentlmmus;
@@ -70,6 +75,7 @@ public class DayCare {
 		classrooms.add(c);
 	}
 	public void addStudent(Student s) {
+            if(s.getId() > max_ID) {max_ID = s.getId();}
 		students.add(s);
 	}
 	public void addTeacher(Teacher t) {

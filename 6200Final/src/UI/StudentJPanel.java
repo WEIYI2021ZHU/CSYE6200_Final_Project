@@ -8,12 +8,15 @@ package UI;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.io.File;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import models.DayCare;
+import models.Student;
 /**
  *
  * @author HP
@@ -28,9 +31,10 @@ public class StudentJPanel extends javax.swing.JPanel {
     //Student student;
     
     public StudentJPanel(JPanel mainJPanel, DayCare dayCare) {
-        this.mainJPanel = mainJPanel;
         initComponents();
+        this.mainJPanel = mainJPanel;
         this.dayCare = dayCare;
+        txtID.setEditable(false);
        //this.student = student;
     }
 
@@ -57,6 +61,7 @@ public class StudentJPanel extends javax.swing.JPanel {
         lblEmailAdd = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("宋体", 1, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -75,15 +80,22 @@ public class StudentJPanel extends javax.swing.JPanel {
         lblOwnName.setText("ID:");
 
         lblOwnTel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblOwnTel.setText("Parent`s Name:");
+        lblOwnTel.setText("Parent's Name:");
 
         lblEmailAdd.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEmailAdd.setText("Address:");
 
-        btnSave.setText("Continue");
+        btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -126,13 +138,19 @@ public class StudentJPanel extends javax.swing.JPanel {
                             .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnSave))
                 .addGap(163, 163, 163))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(btnBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(27, 27, 27)
+                .addComponent(btnBack)
+                .addGap(18, 18, 18)
                 .addComponent(lblTitle)
-                .addGap(46, 46, 46)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBrand)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,9 +168,9 @@ public class StudentJPanel extends javax.swing.JPanel {
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmailAdd)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(btnSave)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addGap(171, 171, 171))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,10 +180,11 @@ public class StudentJPanel extends javax.swing.JPanel {
         String name = txtName.getText();
         String phone = txtPhone.getText();
         String age = txtAge.getText();        
-        String ID = txtID.getText();
         String address = txtAddress.getText();
         String pName = txtPName.getText();
         
+        int id = dayCare.getNextID();
+        int ageD = 0;
         String error = "";
         
 //        student.setName(name);
@@ -183,11 +202,32 @@ public class StudentJPanel extends javax.swing.JPanel {
         if (phone.equals("")){
             error += "Phone is Empty!!\n";
         }
+//        else {
+//            try {
+//                long pNum = Long.getLong(phone);
+//                if(phone.length()!=10) {
+//                    error += "Please enter a 10-digit number for phone numbers!!\n";
+//                }
+//            }
+//            catch(Exception ex) {
+//                error += "Please enter a 10-digit number for phone numbers!!\n";
+//            }
+//        }
         
         if (age.equals("")){
             error += "Age is Empty!!\n";
         }
-        
+        else {
+            try{
+                ageD = Integer.parseInt(age);
+                if(ageD<6 || ageD>72) {
+                    error += "Please enter an Integer between 6 and 72 for Age!!\n";
+                }
+            }
+            catch(NumberFormatException ex) {
+                error += "Please enter an Integer between 6 and 72 for Age!!\n";
+            }
+        }
         
         
         if (pName.equals("")){
@@ -202,6 +242,9 @@ public class StudentJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, error);
         }
         else{
+            Date date = Calendar.getInstance().getTime();
+            Student s = new Student(name, ageD, phone, id, pName, address, date);
+            dayCare.addStudent(s);
             JOptionPane.showMessageDialog(this, "Student Information Saved!");
             StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel);
             mainJPanel.add(sip);
@@ -214,8 +257,15 @@ public class StudentJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        mainJPanel.remove(this);
+        CardLayout layout = (CardLayout) mainJPanel.getLayout();
+        layout.previous(mainJPanel);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel lblBrand;
     private javax.swing.JLabel lblColor;

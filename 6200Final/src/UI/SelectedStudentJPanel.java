@@ -6,6 +6,8 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
@@ -42,6 +44,7 @@ public void refreshTable() {
 
         DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
         model.setRowCount(0);
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
         for (Student p : dayCare.getStudents()) {
             Object row[] = new Object[6];
@@ -50,7 +53,9 @@ public void refreshTable() {
             row[2] = p.getAge();
             row[3] = p.getParentName();
             row[4] = p.getAddress();
-            row[5] = p.getWalkInDate();
+            Date date = p.getWalkInDate();
+            String sDate = dateFormat.format(date);
+            row[5] = sDate;
  
             model.addRow(row);
         }

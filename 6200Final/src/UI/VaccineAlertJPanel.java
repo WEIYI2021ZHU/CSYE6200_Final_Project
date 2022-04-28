@@ -50,20 +50,20 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
 
         VaccineJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Student Name", "Age", "Hib", "DTaP", "Polio", "Hepatitis B", "MMR", "Varicella", "Status"
+                "Student Name", "Hib", "DTaP", "Polio", "Hepatitis B", "MMR", "Varicella", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -153,15 +153,14 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
         for (int i=0;i<dayCare.getStudentlmmus().size();i=i+6) {
                 dayCare.getStudentlmmus().get(i);
                 dayCare.getStudentlmmus().get(i+1);
-                Object[] row = new Object[9];
+                Object[] row = new Object[8];
                 row[0] = dayCare.getStudentlmmus().get(i).getStudentName();
-                row[1] = dayCare.getStudentlmmus().get(i).getAge();
-                row[2] = dayCare.getStudentlmmus().get(i).getDoseAccepted();
-                row[3] = dayCare.getStudentlmmus().get(i+1).getDoseAccepted();
-                row[4] = dayCare.getStudentlmmus().get(i+2).getDoseAccepted();
-                row[5] = dayCare.getStudentlmmus().get(i+3).getDoseAccepted();
-                row[6] = dayCare.getStudentlmmus().get(i+4).getDoseAccepted();
-                row[7] = dayCare.getStudentlmmus().get(i+5).getDoseAccepted();
+                row[1] = dayCare.getStudentlmmus().get(i).getDoseAccepted();
+                row[2] = dayCare.getStudentlmmus().get(i+1).getDoseAccepted();
+                row[3] = dayCare.getStudentlmmus().get(i+2).getDoseAccepted();
+                row[4] = dayCare.getStudentlmmus().get(i+3).getDoseAccepted();
+                row[5] = dayCare.getStudentlmmus().get(i+4).getDoseAccepted();
+                row[6] = dayCare.getStudentlmmus().get(i+5).getDoseAccepted();
                 if(VaccineStatus(dayCare.getStudentlmmus().get(i)) != "Normal"||
                         VaccineStatus(dayCare.getStudentlmmus().get(i+1)) != "Normal"||
                         VaccineStatus(dayCare.getStudentlmmus().get(i+2)) != "Normal"||
@@ -170,7 +169,7 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
                         VaccineStatus(dayCare.getStudentlmmus().get(i+5)) != "Normal"){
                     status = "Alert";
                 }
-                row[8] = status;
+                row[7] = status;
                 
                 
                 model.addRow(row);
@@ -190,26 +189,25 @@ public class VaccineAlertJPanel extends javax.swing.JPanel {
                 }
                 break;
             case("DTaP"):
-                Calendar cal2 = Calendar.getInstance();
-                cal2.setTime(si.getDateAccepted());
-                cal2.add(Calendar.YEAR, (si.getAge()/12)-4);
-                
-                if(si.getAge()<23 && si.getDoseAccepted() == 4){
+                if(si.getAge()<47 && si.getDoseAccepted() == 4){
                     return "Normal";
-                }else if(si.getAge()>=23 && si.getAge()<24 && si.getDoseAccepted() == 4){
+                }else if(si.getAge()>47 && si.getAge()<48 && si.getDoseAccepted() < 4){
                     return "Upcoming";
                 }
-                else if(si.getAge()>=24 && cal2.after(cal1) && si.getDoseAccepted() == 4){
+                else if(si.getAge()>=48 && si.getDoseAccepted() == 4){
+                    return "Normal";
+                }else if(si.getDoseAccepted() == 5){
                     return "Normal";
                 }
                 break;
             case("Polio"):
-                
                 if(si.getAge()<47 && si.getDoseAccepted() == 3){
                     return "Normal";
                 }else if(si.getAge()>=47 && si.getAge()<48 && si.getDoseAccepted() == 3){
                     return "Upcoming";
-                }else if(si.getAge()>=48 && si.getDoseAccepted() == 4){
+                }else if(si.getAge()>=48 && si.getDoseAccepted() == 3){
+                    return "Normal";
+                }else if(si.getDoseAccepted() == 5){
                     return "Normal";
                 }
                 break;

@@ -191,7 +191,7 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
         }
         boolean full = (boolean)TeacherTable.getValueAt(row,4);
         if (full == true){
-            JOptionPane.showMessageDialog(null, "full students and you cannot choose any student!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Full, you can choose other Teacher!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         

@@ -65,6 +65,13 @@ public class Teacher extends Person{
     public int getCapacity() {
         return Capacity;
     }
+    
+    public boolean getFull(){
+        if (Capacity != StuList.size()){
+            return false;
+        }
+        return true;
+    }
 
     public List<Student> getStuList() {
         return StuList;

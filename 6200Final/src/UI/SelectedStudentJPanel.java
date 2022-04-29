@@ -24,15 +24,17 @@ public class SelectedStudentJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private DayCare dayCare;
     private int teacherId;
+    private Teacher teacher;
 
     /**
      * Creates new form StudentJPanel
      */
-    public SelectedStudentJPanel(JPanel userProcessContainer, DayCare dayCare, int teacherId) {
+    public SelectedStudentJPanel(JPanel userProcessContainer, DayCare dayCare, Teacher teacher) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.dayCare = dayCare;
-        this.teacherId = teacherId;
+        this.teacher = teacher;
+//        this.teacherId = teacherId;
         this.setSize(700, 500);
    
         refreshTable();
@@ -47,7 +49,7 @@ public void refreshTable() {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
         for (Student p : dayCare.getStudents()) {
-            Object row[] = new Object[6];
+            Object row[] = new Object[7];
             row[0] = p.getId();
             row[1] = p.getName();
             row[2] = p.getAge();
@@ -56,6 +58,7 @@ public void refreshTable() {
             Date date = p.getWalkInDate();
             String sDate = dateFormat.format(date);
             row[5] = sDate;
+            row[6] = p;
  
             model.addRow(row);
         }
@@ -80,17 +83,17 @@ public void refreshTable() {
 
         StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Student ID", "Name", "Age", "Parent Name", "Address", "WalkIn Date"
+                "Student ID", "Name", "Age", "Parent Name", "Address", "WalkIn Date", "Detail"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -152,32 +155,46 @@ public void refreshTable() {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = StudentTable.getSelectedRow();
         int age = (int)StudentTable.getValueAt(row,2);
+        Student s = (Student)StudentTable.getValueAt(row,6);
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        if(teacherId <= 3 && age > 12){
-        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 6-12 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if(teacher.getMaxStuAge() < age || teacher.getMinStuAge() > age){
+        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose " + teacher.getMinStuAge() +" - " +teacher.getMaxStuAge()+" age!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        if((6 > teacherId && teacherId > 3) && (age > 24 || age < 12)){
-        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 13-24 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        if(teacher.getCapacity() == teacher.getStuList().size()){
+            JOptionPane.showMessageDialog(null, "you cannot choose any students, your studetns are full" , "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        if((8 > teacherId && teacherId > 5) && (age > 35 || age < 25)){
-        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 25-35 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
+        if(teacher.getCapacity() > teacher.getStuList().size()){
+            teacher.getStuList().add(teacher.getStuList().size() -1 , s);
         }
         
-        if((10 > teacherId && teacherId > 7) && (age > 47 || age < 35)){
-        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 36-47 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        int s = (int)StudentTable.getValueAt(row,0);
-        SelectedRoomJPanel vs = new SelectedRoomJPanel(userProcessContainer, dayCare ,s);
+        
+        
+        
+        
+//        if((6 > teacherId && teacherId > 3) && (age > 24 || age < 12)){
+//        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 13-24 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//        
+//        if((8 > teacherId && teacherId > 5) && (age > 35 || age < 25)){
+//        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 25-35 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//        
+//        if((10 > teacherId && teacherId > 7) && (age > 47 || age < 35)){
+//        JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose 36-47 age!!", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+  
+        SelectedRoomJPanel vs = new SelectedRoomJPanel(userProcessContainer, dayCare ,teacher, s);
         userProcessContainer.add("ViewSupplier", vs);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

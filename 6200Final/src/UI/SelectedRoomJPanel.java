@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import models.Classroom;
 import models.DayCare;
+import models.Student;
+import models.Teacher;
 
 /**
  *
@@ -20,16 +22,18 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private DayCare dayCare;
-    private int studentId;
+    private Student student;
+    private Teacher teacher;
 
     /**
      * Creates new form ClassRoom1JPanel
      */
-    public SelectedRoomJPanel(JPanel userProcessContainer, DayCare dayCare, int studentId) {
+    public SelectedRoomJPanel(JPanel userProcessContainer, DayCare dayCare, Teacher teacher, Student student) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.dayCare = dayCare;
-        this.studentId = studentId;
+        this.student = student;
+        this.teacher = teacher;
         refreshTable();
         this.setSize(700, 500);
 //        this.setSize(1000, 500);
@@ -41,12 +45,12 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for (Classroom p : dayCare.getClassrooms()) {
-            Object row[] = new Object[6];
+            Object row[] = new Object[5];
             row[0] = p.getId();
             row[1] = p.getAllTeacher1();
             row[2] = p.getSize();
             row[3] = p.getCapacity();
-//            row[4] = p.;
+            row[4] = p;
 //            row[5] = p.;
 
             model.addRow(row);
@@ -72,17 +76,17 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
 
         RoomTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Room Number", "Teachers", "Size", "Capacity"
+                "Room Number", "Teachers", "Size", "Capacity", "Detail"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -152,6 +156,9 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
         int row = RoomTable.getSelectedRow();
         int size = (int) RoomTable.getValueAt(row, 2);
         int capacity = (int) RoomTable.getValueAt(row, 3);
+
+        Classroom c = (Classroom) RoomTable.getValueAt(row, 4);
+
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
@@ -160,6 +167,18 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
         if (size == capacity) {
             JOptionPane.showMessageDialog(null, "This room is full,Please choose another room!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
+        } else {
+            
+            c.setCapacity(c.getSize() + 1);
+            c.setGroup(teacher);
+            
+            
+            JOptionPane.showMessageDialog(this, "Submited Successfully!");
+
+            TeacherJPanel vs = new TeacherJPanel(userProcessContainer, dayCare);
+            userProcessContainer.add("ViewSupplier", vs);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
         }
 
 //        ClassRoom s = (ClassRoom)TeacherTable.getValueAt(row,0);
@@ -168,13 +187,7 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
 //        mainJPanel.add(tjp);
 //        CardLayout layout = (CardLayout)mainJPanel.getLayout();
 //        layout.next(mainJPanel);
-        JOptionPane.showMessageDialog(this, "Submited Successfully!");
-        
-        
-        TeacherJPanel vs = new TeacherJPanel(userProcessContainer, dayCare);
-        userProcessContainer.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

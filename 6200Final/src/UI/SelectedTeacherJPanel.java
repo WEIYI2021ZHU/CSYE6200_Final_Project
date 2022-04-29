@@ -43,14 +43,16 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) TeacherTable.getModel();
         model.setRowCount(0);
         for (Teacher p : dayCare.getTeachers()) {
-            Object row[] = new Object[7];
+            Object row[] = new Object[9];
             row[0] = p.getId();
             row[1] = p.getName();
             row[2] = p.getAge();
             row[3] = p.getCapacity();
-            row[4] = p.getCredits();
-            row[5] = p.getMinStuAge();
-            row[6] = p.getMaxStuAge();
+            row[4] = p.getFull();
+            row[5] = p.getCredits();
+            row[6] = p.getMinStuAge();
+            row[7] = p.getMaxStuAge();
+            row[8] = p;
             model.addRow(row);
         }
     }
@@ -105,17 +107,17 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
 
         TeacherTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Teacher ID", "Name", "Age", "Capacity", "Credits", "MinStuAge", "MaxStuAge"
+                "Teacher ID", "Name", "Age", "Capacity", "Students are Full?", "Credits", "MinStuAge", "MaxStuAge", "Detail"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -154,7 +156,7 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
                         .addComponent(jButton2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(539, 539, 539)
+                        .addGap(504, 504, 504)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -187,6 +189,11 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        boolean full = (boolean)TeacherTable.getValueAt(row,4);
+        if (full == true){
+            JOptionPane.showMessageDialog(null, "full students and you cannot choose any student!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
 //        String selectedTeacherName = (String) TeacherTable.getValueAt(row, 1);
 //        Teacher selectedTeacher = null;
@@ -197,9 +204,8 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
 //                break;
 //            }
 //        }
-        
-        int t = (int)TeacherTable.getValueAt(row,0);
-        SelectedStudentJPanel vs = new SelectedStudentJPanel(mainJPanel, dayCare, t);
+        Teacher t = (Teacher)TeacherTable.getValueAt(row,8);
+        SelectedStudentJPanel vs = new SelectedStudentJPanel(mainJPanel, dayCare,t);
         mainJPanel.add(vs);
         CardLayout layout = (CardLayout) mainJPanel.getLayout();
         layout.next(mainJPanel);

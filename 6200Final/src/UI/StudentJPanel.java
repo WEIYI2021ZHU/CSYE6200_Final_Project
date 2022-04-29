@@ -76,6 +76,12 @@ public class StudentJPanel extends javax.swing.JPanel {
         lblModel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblModel.setText("Age:");
 
+        txtAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgeActionPerformed(evt);
+            }
+        });
+
         lblColor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblColor.setText("Phone Number:");
 
@@ -308,7 +314,8 @@ public class StudentJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Student Information Saved!");
             cal.add(Calendar.MONTH, -ageD);
             Date newD = cal.getTime();
-            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD);
+            int stuAge = Integer.parseInt(age);
+            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD, stuAge);
             mainJPanel.add(sip);
             CardLayout layout = (CardLayout)mainJPanel.getLayout();
             layout.next(mainJPanel);
@@ -340,6 +347,10 @@ public class StudentJPanel extends javax.swing.JPanel {
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAgeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

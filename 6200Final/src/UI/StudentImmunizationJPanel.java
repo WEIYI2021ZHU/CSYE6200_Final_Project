@@ -29,12 +29,14 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
      * Creates new form CreateJPanel
      */
     private JPanel mainJPanel;
+    private int stuAge;
     //Student student;
     private Date ageD;
-    public StudentImmunizationJPanel(JPanel mainJPanel, Date age) {
+    public StudentImmunizationJPanel(JPanel mainJPanel, Date age, int stuAge) {
         initComponents();
         this.mainJPanel = mainJPanel;
         this.ageD = age;
+        this.stuAge = stuAge;
        //this.student = student;
     }
 
@@ -80,7 +82,13 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hib", "DTaP", "Polio", "Hepatitis B","MMR","Varicella" }));
+        if(stuAge < 2){
+            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hepatitis B"}));
+        }else if(stuAge >=2 && stuAge < 12){
+            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hib", "DTaP", "Polio","Hepatitis B",}));
+        }else if(stuAge >=12){
+            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hib", "DTaP", "Polio", "Hepatitis B","MMR","Varicella" }));
+        }
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);

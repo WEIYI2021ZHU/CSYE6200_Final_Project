@@ -139,6 +139,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPhone">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPhoneActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblOwnName">
       <Properties>
@@ -147,6 +150,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtID">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIDActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblOwnTel">
       <Properties>

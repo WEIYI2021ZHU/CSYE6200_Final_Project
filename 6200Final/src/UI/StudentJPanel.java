@@ -76,8 +76,20 @@ public class StudentJPanel extends javax.swing.JPanel {
         lblColor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblColor.setText("Phone Number:");
 
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneActionPerformed(evt);
+            }
+        });
+
         lblOwnName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblOwnName.setText("ID:");
+
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
 
         lblOwnTel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblOwnTel.setText("Parent's Name:");
@@ -202,17 +214,18 @@ public class StudentJPanel extends javax.swing.JPanel {
         if (phone.equals("")){
             error += "Phone is Empty!!\n";
         }
-//        else {
-//            try {
-//                long pNum = Long.getLong(phone);
-//                if(phone.length()!=10) {
-//                    error += "Please enter a 10-digit number for phone numbers!!\n";
-//                }
-//            }
-//            catch(Exception ex) {
-//                error += "Please enter a 10-digit number for phone numbers!!\n";
-//            }
-//        }
+        else {
+            try {
+                long pNum = Long.parseLong(phone);
+                //long pNum = Long.getLong(phone);
+                if(phone.length()!=10) {
+                    error += "Please enter a 10-digit number for phone numbers!!\n";
+                }
+            }
+            catch(Exception ex) {
+                error += "Please enter a 10-digit number for phone numbers!!\n";
+            }
+        }
         
         if (age.equals("")){
             error += "Age is Empty!!\n";
@@ -265,6 +278,14 @@ public class StudentJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) mainJPanel.getLayout();
         layout.previous(mainJPanel);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

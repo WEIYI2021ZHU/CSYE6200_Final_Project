@@ -19,6 +19,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import models.Student;
+import models.StudentImmu;
 /**
  *
  * @author HP
@@ -29,14 +31,14 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
      * Creates new form CreateJPanel
      */
     private JPanel mainJPanel;
-    private int stuAge;
+    private Student stu;
     //Student student;
     private Date ageD;
-    public StudentImmunizationJPanel(JPanel mainJPanel, Date age, int stuAge) {
+    public StudentImmunizationJPanel(JPanel mainJPanel, Date age, Student stu) {
+        this.stu = stu;
         initComponents();
         this.mainJPanel = mainJPanel;
         this.ageD = age;
-        this.stuAge = stuAge;
        //this.student = student;
     }
 
@@ -82,11 +84,9 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
             }
         });
 
-        if(stuAge < 2){
-            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hepatitis B"}));
-        }else if(stuAge >=2 && stuAge < 12){
+        if(stu.getAge() < 12){
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hib", "DTaP", "Polio","Hepatitis B",}));
-        }else if(stuAge >=12){
+        }else if(stu.getAge() >=12){
             jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hib", "DTaP", "Polio", "Hepatitis B","MMR","Varicella" }));
         }
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -114,41 +114,49 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(216, 216, 216)
                         .addComponent(canvas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
+                        .addGap(226, 226, 226)
+                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(btnSave))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(259, 259, 259)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBrand)
-                            .addComponent(lblModel)
-                            .addComponent(lblColor))
-                        .addGap(128, 128, 128)
-                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(289, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDoes, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblBrand)
+                                    .addComponent(lblModel)
+                                    .addComponent(lblColor))
+                                .addGap(159, 159, 159)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDoes, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(258, 258, 258))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSave)
-                        .addGap(320, 320, 320))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 156, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle)
-                    .addComponent(btnBack))
+                .addComponent(btnBack)
+                .addGap(65, 65, 65)
+                .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTitle)
                 .addGap(42, 42, 42)
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBrand)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,22 +164,15 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblModel)
                     .addComponent(txtDoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblColor)
-                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblColor)
+                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
                 .addComponent(canvas3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(186, 186, 186))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSave)
+                .addGap(147, 147, 147))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -181,6 +182,8 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
         String name=(String)jComboBox1.getSelectedItem();
         String date=txtDate.getText();
         String dose = txtDoes.getText();
+        int d = 0;
+        int age = stu.getAge();
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String error = "";
         Date sDate = new Date();
@@ -191,6 +194,35 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
         if(dose.isEmpty()) {
             error += "Please enter the number of dose!\n";
         }
+        else{
+            try{
+                d = Integer.parseInt(dose);
+                if(d<0) error += "Please enter an integer that is larger than 0\n";
+                else if(d>4) {
+                    error += "Student "+stu.getName()+" cannot take doses larger than 4\n"; 
+                }
+                else if(age<12 && d>3) {
+                    error += "Student "+stu.getName()+" must take doses of "+name+" no larger than 3\n";
+                }
+                if(age>=12) {
+                    if(name.equals("MMR") || name.equals("Varicella")) {
+                        if(d>1) error += "Student "+stu.getName()+" can take only 1 dose of "+name+"\n"; 
+                    }
+                    else if(name.equals("Polio") || name.equals("Hepatitis B")) {
+                        if(d>3) error += "Student "+stu.getName()+" can take no larger than 3 doses of "+name+"\n";
+                    }
+                    else if(name.equals("Hib") || name.equals("DTaP")) {
+                        if(d>4) error += "Student "+stu.getName()+" can take no larger than 4 doses of "+name+"\n";
+                    }
+                }
+            }
+            catch(NumberFormatException ex) {
+                error += "Please enter a number for dose!\n";
+            }
+        }
+        
+        
+        
         
         if(date.isEmpty()) {
             error += "Please enter the date that accepted the vaccine!\n";
@@ -213,6 +245,9 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
             jComboBox1.setSelectedItem("");
             txtDate.setText("");
             txtDoes.setText("");
+            StudentImmu newRecord = new StudentImmu(stu.getId(), stu.getName(), 
+                    name,stu.getAge(),d, sDate);
+            stu.addImmuRecord(newRecord);
             JOptionPane.showMessageDialog(this, "Student Immunization Information Saved!");
         }
         else{
@@ -251,14 +286,14 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDoes;
     // End of variables declaration//GEN-END:variables
 
-    private boolean isNumeric(String ID) {
-        for (int i = ID.length(); --i>=0; ){    
-            if (!Character.isDigit(ID.charAt(i))){  
-                return false;  
-            }  
-        }  
-        return true;          
-    }
+//    private boolean isNumeric(String ID) {
+//        for (int i = ID.length(); --i>=0; ){    
+//            if (!Character.isDigit(ID.charAt(i))){  
+//                return false;  
+//            }  
+//        }  
+//        return true;          
+//    }
 }
 
 

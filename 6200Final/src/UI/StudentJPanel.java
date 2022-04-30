@@ -140,10 +140,17 @@ public class StudentJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 7, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(btnBack))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,25 +181,17 @@ public class StudentJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAddress1)
+                                    .addComponent(txtAddress1, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel2)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addGap(24, 24, 24))
-                    .addComponent(btnSave))
-                .addGap(163, 163, 163))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(btnBack)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel2))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addComponent(btnSave)))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +200,7 @@ public class StudentJPanel extends javax.swing.JPanel {
                 .addComponent(btnBack)
                 .addGap(18, 18, 18)
                 .addComponent(lblTitle)
-                .addGap(73, 73, 73)
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblBrand)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,9 +223,9 @@ public class StudentJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
                 .addComponent(btnSave)
-                .addGap(171, 171, 171))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -292,16 +291,22 @@ public class StudentJPanel extends javax.swing.JPanel {
             error += "Parent's Name is Empty!!\n";
         }
         
-        if (!this.isNumeric(address1)){
+        if (address1.isEmpty()){
             error += "Please enter the Street Number!!\n";
-            
+        }
+        else{
+            try{
+                int ad = Integer.parseInt(address1);
+            }
+            catch(NumberFormatException ex) {
+                error += "Please enter an Integer for address number!!\n";
+            }
         }
         
         if (address2.equals("")){
             error += "Street Name is Empty!!\n";
         }
         
-        String address = address1 + address2;
         
         if(!error.isEmpty()) {
             JOptionPane.showMessageDialog(null, error);
@@ -309,13 +314,14 @@ public class StudentJPanel extends javax.swing.JPanel {
         else{
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
+            String address = address1 + " "+ address2+" Street";
             Student s = new Student(name, ageD, phone, id, pName, address, date);
             dayCare.addStudent(s);
             JOptionPane.showMessageDialog(this, "Student Information Saved!");
-            cal.add(Calendar.MONTH, -ageD);
+            cal.add(Calendar.MONTH, 0-ageD);
             Date newD = cal.getTime();
-            int stuAge = Integer.parseInt(age);
-            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD, stuAge);
+            System.out.println(newD);
+            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD, s);
             mainJPanel.add(sip);
             CardLayout layout = (CardLayout)mainJPanel.getLayout();
             layout.next(mainJPanel);

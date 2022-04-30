@@ -214,7 +214,7 @@ public class TeacherListJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         jpanel.remove(this);
         CardLayout layout = (CardLayout) jpanel.getLayout();
-        layout.previous(jpanel);
+        layout.show(jpanel, "tjp");
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed

@@ -134,35 +134,35 @@ public class TeacherJPanel extends javax.swing.JPanel {
     private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
         TeacherListJPanel tljp = new TeacherListJPanel(mainJPanel, dayCare);
-        mainJPanel.add(tljp);
-        layout.next(mainJPanel);
+        mainJPanel.add(tljp, "tljp");
+        layout.show(mainJPanel, "tljp");
     }//GEN-LAST:event_btnTeacherActionPerformed
 
     private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
         StudentListJPanel sljp = new StudentListJPanel(mainJPanel , dayCare);
-        mainJPanel.add(sljp);
-        layout.next(mainJPanel);
+        mainJPanel.add(sljp, "sljp");
+        layout.show(mainJPanel, "sljp");
     }//GEN-LAST:event_btnStudentActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         CardLayout layout = (CardLayout)mainJPanel.getLayout();// TODO add your handling code here:
-        SelectedTeacherJPanel vajp = new SelectedTeacherJPanel(mainJPanel, dayCare);
-        mainJPanel.add(vajp);
-        layout.next(mainJPanel);
+        SelectedTeacherJPanel stjp = new SelectedTeacherJPanel(mainJPanel, dayCare);
+        mainJPanel.add(stjp, "stjp");
+        layout.show(mainJPanel, "stjp");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void VaccineAlertJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaccineAlertJButtonActionPerformed
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
         VaccineAlertJPanel vajp = new VaccineAlertJPanel(mainJPanel, dayCare);
-        mainJPanel.add(vajp);
-        layout.next(mainJPanel);
+        mainJPanel.add(vajp, "vajp");
+        layout.show(mainJPanel, "vajp");
     }//GEN-LAST:event_VaccineAlertJButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         mainJPanel.remove(this);
         CardLayout layout = (CardLayout) mainJPanel.getLayout();
-        layout.previous(mainJPanel);
+        layout.show(mainJPanel, "mjp");
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

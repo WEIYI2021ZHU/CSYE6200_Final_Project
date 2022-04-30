@@ -26,9 +26,9 @@ public class LoginJFrame extends javax.swing.JFrame {
         this.setSize(1200, 1000);
         this.setLocationRelativeTo(null);
         MainJPanel mjp = new MainJPanel(mainJPanel, this, daycare);
-        mainJPanel.add(mjp);
+        mainJPanel.add(mjp, "mjp");
         CardLayout layout = (CardLayout)mainJPanel.getLayout();
-        layout.next(mainJPanel);
+        layout.show(mainJPanel, "mjp");
     }
 
     /**

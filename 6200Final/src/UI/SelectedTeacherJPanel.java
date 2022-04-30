@@ -179,7 +179,7 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         mainJPanel.remove(this);
         CardLayout layout = (CardLayout) mainJPanel.getLayout();
-        layout.previous(mainJPanel);
+        layout.show(mainJPanel, "tjp");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -207,9 +207,9 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
         
         CardLayout layout = (CardLayout) mainJPanel.getLayout();        
         Teacher t = (Teacher)TeacherTable.getValueAt(row,8);
-        SelectedStudentJPanel vs = new SelectedStudentJPanel(mainJPanel, dayCare,t);
-        mainJPanel.add(vs);
-        layout.next(mainJPanel);
+        SelectedStudentJPanel ssjp = new SelectedStudentJPanel(mainJPanel, dayCare,t);
+        mainJPanel.add(ssjp, "ssjp");
+        layout.show(mainJPanel, "ssjp");
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

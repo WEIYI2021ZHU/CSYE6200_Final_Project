@@ -148,7 +148,7 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        layout.show(userProcessContainer, "ssjp");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -177,9 +177,8 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Submited Successfully!");
 
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            TeacherJPanel vs = new TeacherJPanel(userProcessContainer, dayCare);
-            userProcessContainer.add("ViewSupplier", vs);
-            layout.next(userProcessContainer);
+            TeacherJPanel tjp = new TeacherJPanel(userProcessContainer, dayCare);
+            layout.show(userProcessContainer, "tjp");
         }
 
 //        ClassRoom s = (ClassRoom)TeacherTable.getValueAt(row,0);

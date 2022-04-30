@@ -198,16 +198,16 @@ public void refreshTable() {
   
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        SelectedRoomJPanel vs = new SelectedRoomJPanel(userProcessContainer, dayCare ,teacher, s);
-        userProcessContainer.add("ViewSupplier", vs);
-        layout.next(userProcessContainer);
+        SelectedRoomJPanel srjp = new SelectedRoomJPanel(userProcessContainer, dayCare ,teacher, s);
+        userProcessContainer.add(srjp, "srjp");
+        layout.show(userProcessContainer, "srjp");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        layout.show(userProcessContainer, "stjp");
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -25,7 +25,7 @@
               <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
               <Component id="btnStudent" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace pref="154" max="32767" attributes="0"/>
-              <Component id="VaccineAlertJButton" min="-2" pref="140" max="-2" attributes="0"/>
+              <Component id="btnTeacher" min="-2" pref="140" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -38,7 +38,7 @@
               <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnStudent" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="VaccineAlertJButton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="btnTeacher" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="129" max="32767" attributes="0"/>
           </Group>
@@ -57,7 +57,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="VaccineAlertJButton">
+    <Component class="javax.swing.JButton" name="btnTeacher">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="&#x5b8b;&#x4f53;" size="14" style="0"/>
@@ -65,7 +65,7 @@
         <Property name="text" type="java.lang.String" value="I am Teacher"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VaccineAlertJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTeacherActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

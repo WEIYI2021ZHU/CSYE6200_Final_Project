@@ -272,7 +272,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         mainJPanel.remove(this);
         CardLayout layout = (CardLayout) mainJPanel.getLayout();
-        layout.previous(mainJPanel);
+        layout.show(mainJPanel, "sjp");
     }//GEN-LAST:event_btnBackActionPerformed
 
 

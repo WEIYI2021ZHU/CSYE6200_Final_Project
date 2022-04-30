@@ -323,8 +323,8 @@ public class StudentJPanel extends javax.swing.JPanel {
             System.out.println(newD);
             CardLayout layout = (CardLayout)mainJPanel.getLayout();
             StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD, s, dayCare);
-            mainJPanel.add(sip);
-            layout.next(mainJPanel);
+            mainJPanel.add(sip, "sip");
+            layout.show(mainJPanel, "sip");
         }
         
         
@@ -335,7 +335,7 @@ public class StudentJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         mainJPanel.remove(this);
         CardLayout layout = (CardLayout) mainJPanel.getLayout();
-        layout.previous(mainJPanel);
+        layout.show(mainJPanel, "mjp");
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed

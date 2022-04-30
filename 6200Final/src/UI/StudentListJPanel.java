@@ -120,7 +120,7 @@ public class StudentListJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         jp.remove(this);
         CardLayout layout = (CardLayout) jp.getLayout();
-        layout.previous(jp);
+        layout.show(jp, "tjp");
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void refreshTable() {

@@ -11,6 +11,9 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -238,6 +241,13 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
                     String s = dateFormat.format(ageD);
                     error += "Please enter a vaid date after the born date "+s+"!\n";
                 }
+                else{
+                    DateTimeFormatter df = DateTimeFormatter .ofPattern("MM/dd/yyyy");
+                    LocalDate dateA = LocalDate.parse(dateFormat.format(stu.getWalkInDate()), df);
+                    LocalDate dateB = LocalDate.parse(date, df);
+                    Period p = Period.between(dateB, dateA);
+                    age -= p.getMonths();
+                }
                 
             } catch (ParseException ex) {
                 error += "Please enter a valid Date Format like MM/dd/yyyy !\n";
@@ -250,7 +260,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
 //            txtDate.setText("");
 //            txtDoes.setText("");
             StudentImmu newRecord = new StudentImmu(stu.getId(), stu.getName(), 
-                    name,stu.getAge(),d, sDate);
+                    name,age,d, sDate);
             stu.addImmuRecord(newRecord);
             dayCare.addStudentImmus(newRecord);
             JOptionPane.showMessageDialog(this, "Student Immunization Information Saved!");

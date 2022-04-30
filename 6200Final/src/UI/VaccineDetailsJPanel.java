@@ -5,6 +5,9 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
@@ -61,7 +64,7 @@ public class VaccineDetailsJPanel extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -135,7 +138,7 @@ public class VaccineDetailsJPanel extends javax.swing.JPanel {
     private void populateVaccineDetailsJTable() {
         DefaultTableModel model = (DefaultTableModel) VaccineDetailsJTable.getModel();
         model.setRowCount(0);
-        
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         List<StudentImmu> result = null;
         List<StudentImmu> si = dayCare.getStudentlmmus();
         
@@ -147,7 +150,8 @@ public class VaccineDetailsJPanel extends javax.swing.JPanel {
             row[0] = studentImmu.getVaccineName();
             row[1] = studentImmu.getAge();
             row[2] = studentImmu.getDoseAccepted();
-            row[3] = studentImmu.getDateAccepted();
+            Date date = studentImmu.getDateAccepted();
+            row[3] = dateFormat.format(date);
             row[4] = VaccineAlertJPanel.VaccineStatus(studentImmu);
             model.addRow(row);
         }

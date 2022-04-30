@@ -19,6 +19,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import models.DayCare;
 import models.Student;
 import models.StudentImmu;
 /**
@@ -34,11 +35,13 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
     private Student stu;
     //Student student;
     private Date ageD;
-    public StudentImmunizationJPanel(JPanel mainJPanel, Date age, Student stu) {
+    private DayCare dayCare;
+    public StudentImmunizationJPanel(JPanel mainJPanel, Date age, Student stu, DayCare dayCare) {
         this.stu = stu;
         initComponents();
         this.mainJPanel = mainJPanel;
         this.ageD = age;
+        this.dayCare = dayCare;
        //this.student = student;
     }
 
@@ -84,11 +87,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
             }
         });
 
-        if(stu.getAge() < 12){
-            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hib", "DTaP", "Polio","Hepatitis B",}));
-        }else if(stu.getAge() >=12){
-            jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hib", "DTaP", "Polio", "Hepatitis B","MMR","Varicella" }));
-        }
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hib", "DTaP", "Polio", "Hepatitis B","MMR","Varicella" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -201,10 +200,15 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
                 else if(d>4) {
                     error += "Student "+stu.getName()+" cannot take doses larger than 4\n"; 
                 }
-                else if(age<12 && d>3) {
-                    error += "Student "+stu.getName()+" must take doses of "+name+" no larger than 3\n";
+                if(age<12) {
+                    if(name.equals("MMR") || name.equals("Varicella")) {
+                        error += "Student "+stu.getName()+" cannot take "+name+" at this age\n";
+                    }
+                    else if(d>3) {
+                        error += "Student "+stu.getName()+" must take doses of "+name+" no larger than 3\n";
+                    } 
                 }
-                if(age>=12) {
+                else if(age>=12) {
                     if(name.equals("MMR") || name.equals("Varicella")) {
                         if(d>1) error += "Student "+stu.getName()+" can take only 1 dose of "+name+"\n"; 
                     }
@@ -248,6 +252,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
             StudentImmu newRecord = new StudentImmu(stu.getId(), stu.getName(), 
                     name,stu.getAge(),d, sDate);
             stu.addImmuRecord(newRecord);
+            dayCare.addStudentImmus(newRecord);
             JOptionPane.showMessageDialog(this, "Student Immunization Information Saved!");
         }
         else{

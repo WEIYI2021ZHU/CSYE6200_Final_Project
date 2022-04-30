@@ -62,7 +62,7 @@
                 <Column editable="false" title="Vaccine Name" type="java.lang.String"/>
                 <Column editable="false" title="Age at the time of vaccination" type="java.lang.Integer"/>
                 <Column editable="false" title="Dose" type="java.lang.Integer"/>
-                <Column editable="false" title="Date of Vaccination" type="java.lang.Object"/>
+                <Column editable="false" title="Date of Vaccination" type="java.lang.String"/>
                 <Column editable="false" title="Status" type="java.lang.String"/>
               </Table>
             </Property>

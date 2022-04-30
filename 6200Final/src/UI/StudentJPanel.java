@@ -321,7 +321,7 @@ public class StudentJPanel extends javax.swing.JPanel {
             cal.add(Calendar.MONTH, 0-ageD);
             Date newD = cal.getTime();
             System.out.println(newD);
-            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD, s);
+            StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD, s, dayCare);
             mainJPanel.add(sip);
             CardLayout layout = (CardLayout)mainJPanel.getLayout();
             layout.next(mainJPanel);

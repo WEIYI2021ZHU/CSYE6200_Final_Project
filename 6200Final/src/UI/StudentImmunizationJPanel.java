@@ -201,7 +201,6 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
                     error += "Please enter a vaid date after the born date "+s+"!\n";
                 }
                 else{
-                    date = dateFormat.format(date);
                     LocalDate dateA = LocalDate.parse(dateFormat.format(stu.getWalkInDate()), df);
                     LocalDate dateB = LocalDate.parse(date, df);
                     Period p = Period.between(dateB, dateA);

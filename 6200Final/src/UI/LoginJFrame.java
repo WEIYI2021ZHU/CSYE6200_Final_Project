@@ -70,9 +70,9 @@ public class LoginJFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        ImageIcon icon = new ImageIcon("src/6200IMG1.jpeg");
-        JLabel label = new JLabel(icon);
-        label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+//        ImageIcon icon = new ImageIcon("src/6200IMG1.jpeg");
+//        JLabel label = new JLabel(icon);
+//        label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -101,7 +101,7 @@ public class LoginJFrame extends javax.swing.JFrame {
             public void run() {
                 try {
                     LoginJFrame lj = new LoginJFrame();
-                    lj.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
+//                    lj.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
                     lj.setVisible(true);
                 } catch (ParseException ex) {
                     Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);

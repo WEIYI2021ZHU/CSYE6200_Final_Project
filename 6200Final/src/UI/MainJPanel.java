@@ -29,6 +29,7 @@ public class MainJPanel extends javax.swing.JPanel {
        
         this.setSize(700,500);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

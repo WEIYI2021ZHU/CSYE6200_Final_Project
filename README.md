@@ -1,5 +1,5 @@
 # CSYE6200_Final_Project
-This is a group project.
+This is a group project. Our project based on NetBeans software.
 ### Team Member
 1. 002114556 Lu Zhao
 2. 002192983 Jiachi Sun

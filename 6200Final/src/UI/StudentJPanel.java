@@ -315,6 +315,7 @@ public class StudentJPanel extends javax.swing.JPanel {
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
             String address = address1 + " "+ address2+" Street";
+            phone = phone.substring(0, 3) +"-"+phone.substring(3,6)+"-"+phone.substring(6);
             Student s = new Student(name, ageD, phone, id, pName, address, date);
             dayCare.addStudent(s);
             JOptionPane.showMessageDialog(this, "Student Information Saved!");

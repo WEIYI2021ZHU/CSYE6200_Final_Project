@@ -25,9 +25,9 @@ public class TeacherListJPanel extends javax.swing.JPanel {
      * Creates new form TeacherList
      */
     
-    private JPanel jpanel;
-    private DayCare dayCare;
-    private List<Student> students;
+    JPanel jpanel;
+    DayCare dayCare;
+    List<Student> students;
     public TeacherListJPanel(JPanel jpanel, DayCare daycare) {
         initComponents();
         this.jpanel = jpanel;

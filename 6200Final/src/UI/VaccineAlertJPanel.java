@@ -20,8 +20,8 @@ import models.StudentImmu;
  */
 public class VaccineAlertJPanel extends javax.swing.JPanel {
 
-    private JPanel panel;
-    private DayCare dayCare;
+    JPanel panel;
+    DayCare dayCare;
     /**
      * Creates new form VaccineAlertJPanel
      */

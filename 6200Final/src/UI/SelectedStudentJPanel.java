@@ -21,10 +21,10 @@ import models.Teacher;
  */
 public class SelectedStudentJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-    private DayCare dayCare;
+    JPanel userProcessContainer;
+    DayCare dayCare;
     private int teacherId;
-    private Teacher teacher;
+    Teacher teacher;
 
     /**
      * Creates new form StudentJPanel
@@ -154,12 +154,14 @@ public void refreshTable() {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = StudentTable.getSelectedRow();
-        int age = (int)StudentTable.getValueAt(row,2);
-        Student s = (Student)StudentTable.getValueAt(row,6);
+        
         if(row<0){
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        int age = (int)StudentTable.getValueAt(row,2);
+        Student s = (Student)StudentTable.getValueAt(row,6);
         
         if(teacher.getMaxStuAge() < age || teacher.getMinStuAge() > age){
         JOptionPane.showMessageDialog(null, "you cannot choose the student, Please choose " + teacher.getMinStuAge() +" - " +teacher.getMaxStuAge()+" age!!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -194,9 +196,10 @@ public void refreshTable() {
 //            return;
 //        }
   
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         SelectedRoomJPanel vs = new SelectedRoomJPanel(userProcessContainer, dayCare ,teacher, s);
         userProcessContainer.add("ViewSupplier", vs);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 

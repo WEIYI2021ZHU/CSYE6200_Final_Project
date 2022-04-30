@@ -15,9 +15,9 @@ import models.DayCare;
  */
 public class TeacherJPanel extends javax.swing.JPanel {
 
-    private JPanel mainJPanel;
-    private JFrame frame;
-    private DayCare dayCare;
+    JPanel mainJPanel;
+    JFrame frame;
+    DayCare dayCare;
     /**
      * Creates new form MainJPanel
      */
@@ -132,31 +132,30 @@ public class TeacherJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
+        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         TeacherListJPanel tljp = new TeacherListJPanel(mainJPanel, dayCare);
         mainJPanel.add(tljp);
-        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
     }//GEN-LAST:event_btnTeacherActionPerformed
 
     private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
+        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         StudentListJPanel sljp = new StudentListJPanel(mainJPanel , dayCare);
         mainJPanel.add(sljp);
-        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
     }//GEN-LAST:event_btnStudentActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        CardLayout layout = (CardLayout)mainJPanel.getLayout();// TODO add your handling code here:
         SelectedTeacherJPanel vajp = new SelectedTeacherJPanel(mainJPanel, dayCare);
         mainJPanel.add(vajp);
-        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void VaccineAlertJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaccineAlertJButtonActionPerformed
+        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         VaccineAlertJPanel vajp = new VaccineAlertJPanel(mainJPanel, dayCare);
         mainJPanel.add(vajp);
-        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
     }//GEN-LAST:event_VaccineAlertJButtonActionPerformed
 

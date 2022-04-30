@@ -26,8 +26,8 @@ public class StudentJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateJPanel
      */
-    private JPanel mainJPanel;
-    private DayCare dayCare;
+    JPanel mainJPanel;
+    DayCare dayCare;
     //Student student;
     
     public StudentJPanel(JPanel mainJPanel, DayCare dayCare) {
@@ -321,9 +321,9 @@ public class StudentJPanel extends javax.swing.JPanel {
             cal.add(Calendar.MONTH, 0-ageD);
             Date newD = cal.getTime();
             System.out.println(newD);
+            CardLayout layout = (CardLayout)mainJPanel.getLayout();
             StudentImmunizationJPanel sip = new StudentImmunizationJPanel(mainJPanel, newD, s, dayCare);
             mainJPanel.add(sip);
-            CardLayout layout = (CardLayout)mainJPanel.getLayout();
             layout.next(mainJPanel);
         }
         

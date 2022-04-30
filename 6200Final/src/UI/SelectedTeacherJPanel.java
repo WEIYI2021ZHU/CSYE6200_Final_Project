@@ -22,8 +22,8 @@ import models.Teacher;
  */
 public class SelectedTeacherJPanel extends javax.swing.JPanel {
 
-    private JPanel mainJPanel;
-    private DayCare dayCare;
+    JPanel mainJPanel;
+    DayCare dayCare;
     /**
      * Creates new form TeacherJPanel
      */
@@ -204,10 +204,11 @@ public class SelectedTeacherJPanel extends javax.swing.JPanel {
 //                break;
 //            }
 //        }
+        
+        CardLayout layout = (CardLayout) mainJPanel.getLayout();        
         Teacher t = (Teacher)TeacherTable.getValueAt(row,8);
         SelectedStudentJPanel vs = new SelectedStudentJPanel(mainJPanel, dayCare,t);
         mainJPanel.add(vs);
-        CardLayout layout = (CardLayout) mainJPanel.getLayout();
         layout.next(mainJPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
 

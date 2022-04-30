@@ -31,11 +31,11 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateJPanel
      */
-    private JPanel mainJPanel;
+    JPanel mainJPanel;
     private Student stu;
     //Student student;
     private Date ageD;
-    private DayCare dayCare;
+    DayCare dayCare;
     public StudentImmunizationJPanel(JPanel mainJPanel, Date age, Student stu, DayCare dayCare) {
         this.stu = stu;
         initComponents();
@@ -202,7 +202,7 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
                 }
                 if(age<12) {
                     if(name.equals("MMR") || name.equals("Varicella")) {
-                        error += "Student "+stu.getName()+" cannot take "+name+" at this age\n";
+                        if(d!=0) error += "Student "+stu.getName()+" cannot take "+name+" at this age\n";
                     }
                     else if(d>3) {
                         error += "Student "+stu.getName()+" must take doses of "+name+" no larger than 3\n";
@@ -247,8 +247,8 @@ public class StudentImmunizationJPanel extends javax.swing.JPanel {
         
         if(error.isEmpty()) {
             jComboBox1.setSelectedItem("");
-            txtDate.setText("");
-            txtDoes.setText("");
+//            txtDate.setText("");
+//            txtDoes.setText("");
             StudentImmu newRecord = new StudentImmu(stu.getId(), stu.getName(), 
                     name,stu.getAge(),d, sDate);
             stu.addImmuRecord(newRecord);

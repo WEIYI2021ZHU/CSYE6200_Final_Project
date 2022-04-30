@@ -15,9 +15,9 @@ import models.DayCare;
  */
 public class MainJPanel extends javax.swing.JPanel {
 
-    private JPanel mainJPanel;
-    private JFrame frame;
-    private DayCare dayCare;
+    JPanel mainJPanel;
+    JFrame frame;
+    DayCare dayCare;
     /**
      * Creates new form MainJPanel
      */
@@ -92,16 +92,16 @@ public class MainJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
+        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         StudentJPanel cjp = new StudentJPanel(mainJPanel, dayCare);
         mainJPanel.add(cjp);
-        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
     }//GEN-LAST:event_btnStudentActionPerformed
 
     private void VaccineAlertJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VaccineAlertJButtonActionPerformed
+        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         TeacherJPanel tjp = new TeacherJPanel(mainJPanel, dayCare);
         mainJPanel.add(tjp);
-        CardLayout layout = (CardLayout)mainJPanel.getLayout();
         layout.next(mainJPanel);
     }//GEN-LAST:event_VaccineAlertJButtonActionPerformed
 

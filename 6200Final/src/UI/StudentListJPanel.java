@@ -5,6 +5,7 @@
 package UI;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,15 +25,13 @@ public class StudentListJPanel extends javax.swing.JPanel {
     /**
      * Creates new form StudentList
      */
-    private JPanel jp;
-    private DayCare dayCare;
+    JPanel jp;
+    DayCare dayCare;
     public StudentListJPanel(JPanel jp, DayCare dayCare) {
         initComponents();
         this.jp = jp;
         this.dayCare = dayCare;
         refreshTable();
-        
-        System.out.println(dayCare.getTeachers());
     }
 
     /**
@@ -79,16 +78,6 @@ public class StudentListJPanel extends javax.swing.JPanel {
             }
         });
         ScrollPnae.setViewportView(studentTable);
-        if (studentTable.getColumnModel().getColumnCount() > 0) {
-            studentTable.getColumnModel().getColumn(0).setResizable(false);
-            studentTable.getColumnModel().getColumn(1).setResizable(false);
-            studentTable.getColumnModel().getColumn(2).setResizable(false);
-            studentTable.getColumnModel().getColumn(3).setResizable(false);
-            studentTable.getColumnModel().getColumn(4).setResizable(false);
-            studentTable.getColumnModel().getColumn(5).setResizable(false);
-            studentTable.getColumnModel().getColumn(6).setResizable(false);
-            studentTable.getColumnModel().getColumn(7).setResizable(false);
-        }
 
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

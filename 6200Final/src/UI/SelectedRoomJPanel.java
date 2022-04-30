@@ -20,10 +20,10 @@ import models.Teacher;
  */
 public class SelectedRoomJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-    private DayCare dayCare;
-    private Student student;
-    private Teacher teacher;
+    JPanel userProcessContainer;
+    DayCare dayCare;
+    Student student;
+    Teacher teacher;
 
     /**
      * Creates new form ClassRoom1JPanel
@@ -138,9 +138,9 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(39, 39, 39)
                 .addComponent(jButton2)
-                .addGap(408, 408, 408))
+                .addGap(401, 401, 401))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,15 +154,16 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int row = RoomTable.getSelectedRow();
-        int size = (int) RoomTable.getValueAt(row, 2);
-        int capacity = (int) RoomTable.getValueAt(row, 3);
-
-        Classroom c = (Classroom) RoomTable.getValueAt(row, 4);
 
         if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        int size = (int) RoomTable.getValueAt(row, 2);
+        int capacity = (int) RoomTable.getValueAt(row, 3);
+
+        Classroom c = (Classroom) RoomTable.getValueAt(row, 4);
 
         if (size == capacity) {
             JOptionPane.showMessageDialog(null, "This room is full,Please choose another room!!", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -175,9 +176,9 @@ public class SelectedRoomJPanel extends javax.swing.JPanel {
             
             JOptionPane.showMessageDialog(this, "Submited Successfully!");
 
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             TeacherJPanel vs = new TeacherJPanel(userProcessContainer, dayCare);
             userProcessContainer.add("ViewSupplier", vs);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
         }
 
